@@ -133,3 +133,24 @@ body {
 .float {
   animation: float 3s ease-in-out infinite;
 }
+
+/* Section horizontal padding */
+section.py-20.px-8.sm\:px-12.lg\:px-16.bg-muted.relative.min-h-screen.flex.items-center.justify-center {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+section.py-20.px-8.sm\:px-12.lg\:px-16.relative.bg-background.min-h-screen.flex.items-center.justify-center {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+section.relative.min-h-screen.flex.items-center.justify-center.overflow-hidden.px-8.sm\:px-12.lg\:px-16 {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+footer.py-12.px-8.sm\:px-12.lg\:px-16.border-t.border-border.bg-background.relative {
+  padding-left: 16px;
+  padding-right: 16px;
+}

@@ -52,7 +52,7 @@ export default function Home() {
       <ScrollProgress />
 
       {/* Hero Section with Parallax */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-8 sm:px-12 lg:px-16">
         <div className="absolute inset-0 matrix-bg opacity-20"></div>
 
         {/* Floating background elements */}
@@ -161,7 +161,7 @@ export default function Home() {
 
       {/* Featured Project Section */}
       {featuredProject && (
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted relative min-h-screen flex items-center justify-center">
+        <section className="py-20 px-8 sm:px-12 lg:px-16 bg-muted relative min-h-screen flex items-center justify-center">
           {/* Background container to prevent content bleeding through */}
           <div className="absolute inset-0 bg-muted"></div>
 
@@ -349,7 +349,7 @@ export default function Home() {
       </section>
 
       {/* Footer with Parallax */}
-      <footer className="py-12 px-4 sm:px-6 lg:px-8 border-t border-border bg-background relative">
+      <footer className="py-12 px-8 sm:px-12 lg:px-16 border-t border-border bg-background relative">
         {/* Background container to prevent content bleeding through */}
         <div className="absolute inset-0 bg-background"></div>
 
