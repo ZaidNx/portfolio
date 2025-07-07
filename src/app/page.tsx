@@ -24,7 +24,7 @@ import {
   ScrollProgress,
   FloatingElement,
 } from '../components/ScrollSection';
-import { AboutSection } from '../components/AboutSection';
+// import { AboutSection } from '../components/AboutSection';
 import { FeaturedProject } from '../components/FeaturedProject';
 import { ProjectSection } from '../components/ProjectSection';
 import {
@@ -51,113 +51,77 @@ export default function Home() {
     >
       <ScrollProgress />
 
-      {/* Hero Section with Parallax */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-8 sm:px-12 lg:px-16">
-        <div className="absolute inset-0 matrix-bg opacity-20"></div>
+      {/* Hero Section - Centered Image with Text on Sides */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-8 sm:px-12 lg:px-16 bg-background">
+        {/* Background gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-primary/10"></div>
 
-        {/* Floating background elements */}
-        <motion.div
-          className="absolute top-20 left-10 w-20 h-20 bg-primary/10 rounded-full blur-xl"
-          animate={{
-            y: [0, -20, 0],
-            x: [0, 10, 0],
-            scale: [1, 1.2, 1],
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-        />
-        <motion.div
-          className="absolute bottom-20 right-10 w-32 h-32 bg-secondary/10 rounded-full blur-xl"
-          animate={{
-            y: [0, 20, 0],
-            x: [0, -15, 0],
-            scale: [1, 0.8, 1],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: 'easeInOut',
-            delay: 2,
-          }}
-        />
-
-        <div className="relative z-10 flex flex-col items-center justify-center text-center max-w-4xl mx-auto w-full">
-          <ParallaxText speed={0.3}>
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="flex flex-col items-center space-y-8 w-full"
+        {/* Main content container - centered */}
+        <div className="relative z-10 flex flex-col lg:flex-row items-center justify-center w-full max-w-7xl mx-auto">
+          {/* Left text - "Hey, there" */}
+          <motion.div
+            initial={{ opacity: 0, x: -100 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="flex-1 flex items-center justify-end lg:pr-8 mb-8 lg:mb-0"
+          >
+            <h2
+              className="text-4xl md:text-6xl lg:text-7xl font-serif italic text-muted-foreground text-center lg:text-right"
+              style={{ lineHeight: 1.1 }}
             >
-              <motion.h1
-                className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold glow-text leading-tight"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.2, duration: 1 }}
-              >
-                Hi, I'm Zaid 👋
-              </motion.h1>
-              <motion.p
-                className="text-lg sm:text-xl md:text-2xl text-muted-foreground font-mono max-w-2xl"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.4, duration: 1 }}
-              >
-                Full-Stack Software Engineer | SaaS Specialist | Mobile
-                Developer
-              </motion.p>
-              <motion.div
-                className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8 w-full max-w-md sm:max-w-none"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6, duration: 0.8 }}
-              >
-                <motion.button
-                  className="w-full sm:w-auto px-8 py-4 bg-primary text-background font-mono font-semibold rounded-lg glow hover:scale-105 transition-transform"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  View Projects
-                </motion.button>
-                <motion.button
-                  className="w-full sm:w-auto px-8 py-4 border border-primary text-primary font-mono font-semibold rounded-lg hover:bg-primary hover:text-background transition-colors flex items-center justify-center"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Download className="mr-2 h-4 w-4" />
-                  Download Resume
-                </motion.button>
-                <motion.a
-                  href="https://github.com/ZaidNx"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full sm:w-auto px-8 py-4 border border-secondary text-secondary font-mono font-semibold rounded-lg hover:bg-secondary hover:text-background transition-colors flex items-center justify-center"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  GitHub <ExternalLink className="ml-2 h-4 w-4" />
-                </motion.a>
-              </motion.div>
-            </motion.div>
-          </ParallaxText>
+              Hey, there
+            </h2>
+          </motion.div>
+
+          {/* Center image - large and prominent */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.5 }}
+            className="relative flex-shrink-0 mx-4"
+          >
+            {/* Actual hero image with transparency and shadow */}
+            <div className="w-72 h-80 md:w-80 md:h-96 lg:w-96 lg:h-[500px] flex items-center justify-center overflow-visible">
+              <Image
+                src="/zaid-hero.png"
+                alt="Zaid Hero"
+                width={384}
+                height={500}
+                className="drop-shadow-2xl shadow-xl"
+                priority
+                style={{ objectFit: 'contain', width: '100%', height: '100%' }}
+              />
+            </div>
+            {/* Optional: Glow effect behind image */}
+            <div className="absolute inset-0 bg-primary/10 rounded-full blur-2xl -z-10 scale-110"></div>
+          </motion.div>
+
+          {/* Right text - "I AM ZAID" */}
+          <motion.div
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="flex-1 flex items-center justify-start lg:pl-8 mt-8 lg:mt-0"
+          >
+            <div className="text-center lg:text-left">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-foreground glow-text mb-2">
+                I AM ZAID
+              </h1>
+              <h3 className="text-xl md:text-2xl lg:text-3xl font-mono text-primary">
+                Full Stack Dev
+              </h3>
+            </div>
+          </motion.div>
         </div>
 
-        <motion.div
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          <div className="w-6 h-10 border-2 border-primary rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-primary rounded-full mt-2 animate-bounce"></div>
-          </div>
-        </motion.div>
+        {/* Floating elements for extra effect */}
+        <div className="absolute top-20 left-20 w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+        <div className="absolute bottom-20 right-20 w-3 h-3 bg-secondary rounded-full animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-10 w-1 h-1 bg-primary/60 rounded-full animate-pulse delay-500"></div>
       </section>
 
       {/* About Section */}
-      <AboutSection />
+      {/* <AboutSection /> */}
 
       {/* Featured Project Section */}
       {featuredProject && (
