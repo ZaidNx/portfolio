@@ -131,7 +131,7 @@ export default function Home() {
                   Download Resume
                 </motion.button>
                 <motion.a
-                  href="https://github.com/zaid"
+                  href="https://github.com/ZaidNx"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full sm:w-auto px-8 py-4 border border-secondary text-secondary font-mono font-semibold rounded-lg hover:bg-secondary hover:text-background transition-colors flex items-center justify-center"
@@ -202,11 +202,11 @@ export default function Home() {
       />
 
       {/* Contact Section with Fixed Layout */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 relative bg-background">
+      <section className="py-20 px-8 sm:px-12 lg:px-16 relative bg-background">
         {/* Background container to prevent content bleeding through */}
         <div className="absolute inset-0 bg-background"></div>
 
-        <div className="max-w-6xl mx-auto w-full relative z-10">
+        <div className="max-w-6xl mx-auto w-full relative z-10 pb-12">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -223,14 +223,24 @@ export default function Home() {
           </motion.div>
 
           {/* Fixed Grid Layout */}
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 w-full">
+          <div
+            className="grid lg:grid-cols-2 gap-12 lg:gap-16 w-full pt-10 pb-10"
+            style={{
+              gridTemplateColumns: '1fr 1fr',
+              paddingTop: '16px',
+              paddingBottom: '16px',
+              paddingLeft: '16px',
+              paddingRight: '16px',
+            }}
+          >
             {/* Left Column - Contact Info */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
-              className="flex flex-col space-y-8 w-full"
+              className="flex flex-col space-y-8 w-full px-8 lg:px-12"
+              style={{ gridColumn: '1' }}
             >
               <div className="space-y-4">
                 <h3 className="text-2xl font-bold text-foreground">
@@ -241,22 +251,22 @@ export default function Home() {
                   projects. Let's discuss how we can work together!
                 </p>
               </div>
-              <div className="flex flex-col space-y-4">
+              <div className="flex flex-col space-y-8">
                 {[
                   {
                     icon: Mail,
-                    text: 'zaid@example.com',
-                    href: 'mailto:zaid@example.com',
+                    text: 'zaid.ch20@gmail.com',
+                    href: 'mailto:zaid.ch20@gmail.com',
                   },
                   {
                     icon: Linkedin,
                     text: 'LinkedIn',
-                    href: 'https://linkedin.com/in/zaid',
+                    href: 'https://www.linkedin.com/in/zaid-naeem-1b24611a8',
                   },
                   {
                     icon: Github,
                     text: 'GitHub',
-                    href: 'https://github.com/zaid',
+                    href: 'https://github.com/ZaidNx',
                   },
                 ].map((item, index) => (
                   <motion.a
@@ -264,7 +274,7 @@ export default function Home() {
                     href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 text-primary hover:text-secondary transition-colors"
+                    className="flex items-center gap-3 text-primary hover:text-secondary transition-colors p-4 rounded-lg hover:bg-muted/50 border border-transparent hover:border-primary/20"
                     whileHover={{ x: 10 }}
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
@@ -289,7 +299,8 @@ export default function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
               viewport={{ once: true }}
-              className="flex flex-col space-y-6 w-full"
+              className="flex flex-col space-y-6 w-full px-8 lg:px-12 lg:ml-auto lg:max-w-md lg:mr-8"
+              style={{ gridColumn: '2' }}
             >
               {[
                 { type: 'text', placeholder: 'Your Name' },
@@ -303,25 +314,28 @@ export default function Home() {
                   transition={{ delay: index * 0.1, duration: 0.5 }}
                   viewport={{ once: true }}
                   className="w-full"
+                  style={{ marginBottom: '12px' }}
                 >
                   {field.type === 'textarea' ? (
                     <textarea
                       placeholder={field.placeholder}
                       rows={4}
                       className="w-full p-4 bg-muted border border-border rounded-lg focus:border-primary focus:outline-none font-mono resize-none"
+                      style={{ paddingLeft: '6px' }}
                     />
                   ) : (
                     <input
                       type={field.type}
                       placeholder={field.placeholder}
                       className="w-full p-4 bg-muted border border-border rounded-lg focus:border-primary focus:outline-none font-mono"
+                      style={{ paddingLeft: '6px' }}
                     />
                   )}
                 </motion.div>
               ))}
               <motion.button
                 type="submit"
-                className="w-full px-8 py-4 bg-primary text-background font-mono font-semibold rounded-lg glow hover:scale-105 transition-transform"
+                className="w-full px-8 py-4 bg-primary text-background font-mono font-semibold rounded-lg glow hover:scale-105 transition-transform mb-6"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 initial={{ opacity: 0, y: 20 }}
@@ -363,7 +377,7 @@ export default function Home() {
                   Resume
                 </motion.a>
                 <motion.a
-                  href="https://github.com/zaid"
+                  href="https://github.com/ZaidNx"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-primary transition-colors font-mono"

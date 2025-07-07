@@ -29,6 +29,30 @@ export const projects: Project[] = [
     category: 'featured',
   },
   {
+    id: 'intelliserve-crm',
+    title: 'IntelliServe CRM – Full-Stack Appointment & Service Management',
+    description:
+      'A robust, full-stack CRM application tailored for service-based businesses like mechanics, beauticians, and dentists.',
+    features: [
+      'End-to-end customer relationship management',
+      'Appointment scheduling with public booking interface',
+      'Multi-business type support (Mechanic, Beautician, Dentist, Tutor)',
+      'Dashboard with insights, services management, and customer tracking',
+      'AI chatbot for customer queries (WIP)',
+    ],
+    techStack: [
+      'React',
+      'Vite',
+      'TailwindCSS',
+      'Node.js',
+      'Express',
+      'MongoDB Atlas',
+    ],
+    liveUrl: 'https://intelliserve-crm.onrender.com',
+    demoUrl: 'https://www.youtube.com/watch?v=nsMJt55dDmM',
+    category: 'featured',
+  },
+  {
     id: 'ezofficeinventory-web',
     title: 'EZOfficeInventory (Web)',
     description: 'Asset Management platform for global enterprises.',
