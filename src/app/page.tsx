@@ -224,9 +224,10 @@ export default function Home() {
 
           {/* Fixed Grid Layout */}
           <div
-            className="grid lg:grid-cols-2 gap-12 lg:gap-16 w-full pt-10 pb-10"
+            className="grid lg:grid-cols-2 gap-12 lg:gap-16 w-full"
             style={{
               gridTemplateColumns: '1fr 1fr',
+              width: '100%',
               paddingTop: '16px',
               paddingBottom: '16px',
               paddingLeft: '16px',
