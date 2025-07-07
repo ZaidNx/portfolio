@@ -206,7 +206,7 @@ export default function Home() {
         {/* Background container to prevent content bleeding through */}
         <div className="absolute inset-0 bg-background"></div>
 
-        <div className="max-w-6xl mx-auto w-full relative z-10 pb-12">
+        <div className="w-full relative z-10 pb-12">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -224,9 +224,8 @@ export default function Home() {
 
           {/* Fixed Grid Layout */}
           <div
-            className="grid lg:grid-cols-2 gap-12 lg:gap-16 w-full"
+            className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 w-full"
             style={{
-              gridTemplateColumns: '1fr 1fr',
               width: '100%',
               paddingTop: '16px',
               paddingBottom: '16px',
@@ -241,7 +240,6 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
               className="flex flex-col space-y-8 w-full px-8 lg:px-12"
-              style={{ gridColumn: '1' }}
             >
               <div className="space-y-4">
                 <h3 className="text-2xl font-bold text-foreground">
@@ -301,7 +299,6 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.4 }}
               viewport={{ once: true }}
               className="flex flex-col space-y-6 w-full px-8 lg:px-12 lg:ml-auto lg:max-w-md lg:mr-8"
-              style={{ gridColumn: '2' }}
             >
               {[
                 { type: 'text', placeholder: 'Your Name' },
