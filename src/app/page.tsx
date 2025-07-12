@@ -24,7 +24,7 @@ import {
   ScrollProgress,
   FloatingElement,
 } from '../components/ScrollSection';
-// import { AboutSection } from '../components/AboutSection';
+import { AboutSection } from '../components/AboutSection';
 import { FeaturedProject } from '../components/FeaturedProject';
 import { ProjectSection } from '../components/ProjectSection';
 import {
@@ -116,7 +116,7 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      {/* <AboutSection /> */}
+      <AboutSection />
 
       {/* Featured Project Section */}
       {featuredProject && (
@@ -135,7 +135,7 @@ export default function Home() {
               <h2 className="text-3xl sm:text-4xl font-bold glow-text mb-4">
                 Featured Project
               </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto pb-4">
                 My latest and most impactful work
               </p>
             </motion.div>
@@ -312,7 +312,7 @@ export default function Home() {
         {/* Background container to prevent content bleeding through */}
         <div className="absolute inset-0 bg-background"></div>
 
-        <div className="max-w-7xl mx-auto w-full relative z-10">
+        <div className="max-w-7xl mx-auto w-full relative z-10 flex justify-center">
           <ParallaxText speed={0.1}>
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -321,10 +321,10 @@ export default function Home() {
               viewport={{ once: true }}
               className="flex flex-col items-center space-y-6"
             >
-              <p className="text-muted-foreground font-mono text-center">
-                Built with ❤️ using Cursor + Deployed on Vercel
+              <p className="text-muted-foreground font-mono text-center w-full">
+                --
               </p>
-              <div className="flex flex-wrap justify-center gap-6">
+              <div className="flex flex-wrap justify-center gap-6 w-full">
                 <motion.a
                   href="/resume.pdf"
                   className="text-muted-foreground hover:text-primary transition-colors font-mono"
@@ -344,8 +344,8 @@ export default function Home() {
                   GitHub
                 </motion.a>
               </div>
-              <p className="text-sm text-muted-foreground text-center">
-                © 2024 Zaid Naeem. All rights reserved.
+              <p className="text-sm text-muted-foreground text-center w-full">
+                © 2025 Zaid Naeem. All rights reserved.
               </p>
             </motion.div>
           </ParallaxText>

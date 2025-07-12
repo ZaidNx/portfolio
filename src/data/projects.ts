@@ -7,6 +7,8 @@ export interface Project {
   liveUrl?: string;
   demoUrl?: string;
   githubUrl?: string;
+  iosUrl?: string;
+  androidUrl?: string;
   image?: string;
   category: 'featured' | 'web' | 'mobile';
 }
@@ -110,6 +112,9 @@ export const projects: Project[] = [
     description: 'Track assets on the go with barcode scanning.',
     features: ['Offline check-in/out', 'QR/barcode scans', 'Web-app sync'],
     techStack: ['React Native', 'Redux'],
+    iosUrl: 'https://apps.apple.com/us/app/ezo/id516935177',
+    androidUrl:
+      'https://play.google.com/store/apps/details?id=com.ezofficeinventory.mobile2',
     category: 'mobile',
   },
   {
@@ -122,6 +127,9 @@ export const projects: Project[] = [
       'Offline inventory logs',
     ],
     techStack: ['React Native', 'Redux Thunk'],
+    iosUrl: 'https://apps.apple.com/us/app/ezo-assetsonar/id1477590025',
+    androidUrl:
+      'https://play.google.com/store/apps/details?id=com.assetsonar.mobile',
     category: 'mobile',
   },
   {
@@ -134,6 +142,9 @@ export const projects: Project[] = [
       'Work order views',
     ],
     techStack: ['React Native', 'TypeScript'],
+    iosUrl: 'https://apps.apple.com/jp/app/ezo-cmms/id6448132457?l=en-US',
+    androidUrl:
+      'https://play.google.com/store/apps/details?id=com.ezocmms.mobile',
     category: 'mobile',
   },
   {
@@ -146,6 +157,9 @@ export const projects: Project[] = [
       'Offline-friendly UI',
     ],
     techStack: ['React Native', 'Redux'],
+    iosUrl: 'https://apps.apple.com/us/app/ezrentout/id907018745',
+    androidUrl:
+      'https://play.google.com/store/apps/details?id=com.ezrentout.mobile',
     category: 'mobile',
   },
 ];

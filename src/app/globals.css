@@ -154,3 +154,15 @@ footer.py-12.px-8.sm\:px-12.lg\:px-16.border-t.border-border.bg-background.relat
   padding-left: 16px;
   padding-right: 16px;
 }
+
+/* Custom margin override for Major Highlights section */
+.ai-style-change-1.space-y-6.mt-16 {
+  margin-top: 16px;
+}
+
+/* Custom flexbox override for Tech Stack spacing */
+.ai-style-change-3.space-y-8 {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}

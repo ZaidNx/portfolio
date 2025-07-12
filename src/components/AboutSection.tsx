@@ -33,9 +33,9 @@ export function AboutSection() {
       <div className="max-w-7xl mx-auto w-full relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start w-full">
           {/* Left Column - Profile */}
-          <div className="space-y-8 w-full">
+          <div className="space-y-12 w-full">
             {/* Profile Header */}
-            <div className="space-y-4">
+            <div className="space-y-6">
               <h1 className="text-4xl sm:text-5xl font-bold glow-text leading-tight">
                 Zaid Naeem
               </h1>
@@ -64,8 +64,8 @@ export function AboutSection() {
             </div>
 
             {/* Personal Focus */}
-            <div className="bg-muted p-6 rounded-lg border border-border w-full">
-              <h3 className="text-lg font-bold text-foreground mb-3 flex items-center gap-2">
+            <div className="bg-muted p-8 rounded-lg border border-border w-full">
+              <h3 className="text-lg font-bold text-foreground mb-4 flex items-center gap-2">
                 <span className="text-primary">🌟</span>
                 Personal Focus
               </h3>
@@ -77,24 +77,24 @@ export function AboutSection() {
           </div>
 
           {/* Right Column - Tech Stack & Highlights */}
-          <div className="space-y-8 w-full">
+          <div className="space-y-12 w-full">
             {/* Tech Stack */}
-            <div className="space-y-4">
+            <div className="space-y-6">
               <h3 className="text-2xl font-bold text-foreground flex items-center gap-2">
                 <span className="text-primary">🧑‍💻</span>
                 Tech Stack
               </h3>
-              <div className="space-y-6">
+              <div className="space-y-8 ai-style-change-3">
                 {Object.entries(techStack).map(([category, techs]) => (
-                  <div key={category} className="space-y-3">
+                  <div key={category} className="space-y-4">
                     <h4 className="text-sm font-semibold text-primary uppercase tracking-wide">
                       {category}
                     </h4>
-                    <div className="flex flex-wrap gap-2 justify-start">
+                    <div className="flex flex-wrap gap-3 justify-start">
                       {techs.map((tech, idx) => (
                         <span
                           key={idx}
-                          className="px-3 py-1 bg-muted text-sm font-mono rounded border border-border text-muted-foreground hover:text-primary hover:border-primary transition-colors"
+                          className="px-4 py-2 bg-muted text-sm font-mono rounded border border-border text-muted-foreground hover:text-primary hover:border-primary transition-colors"
                         >
                           {tech}
                         </span>
@@ -106,16 +106,16 @@ export function AboutSection() {
             </div>
 
             {/* Major Highlights */}
-            <div className="space-y-4">
+            <div className="space-y-6 mt-16 ai-style-change-1">
               <h3 className="text-2xl font-bold text-foreground flex items-center gap-2">
                 <span className="text-primary">🛠️</span>
                 Major Highlights
               </h3>
-              <ul className="space-y-3">
+              <ul className="space-y-4">
                 {highlights.map((highlight, idx) => (
                   <li
                     key={idx}
-                    className="text-muted-foreground flex items-start gap-3"
+                    className="text-muted-foreground flex items-start gap-4"
                   >
                     <span className="text-primary mt-1 text-sm">•</span>
                     <span>{highlight}</span>
