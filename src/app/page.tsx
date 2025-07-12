@@ -2,28 +2,9 @@
 
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { useRef, useState } from 'react';
-import {
-  Github,
-  Linkedin,
-  Mail,
-  Download,
-  ExternalLink,
-  Code,
-  Terminal,
-  Database,
-  Globe,
-  Smartphone,
-  Zap,
-  ChevronDown,
-} from 'lucide-react';
+import { Github, Linkedin, Mail, Download } from 'lucide-react';
 import Image from 'next/image';
-import {
-  ScrollSection,
-  ParallaxText,
-  StickySection,
-  ScrollProgress,
-  FloatingElement,
-} from '../components/ScrollSection';
+import { ParallaxText, ScrollProgress } from '../components/ScrollSection';
 import { AboutSection } from '../components/AboutSection';
 import { FeaturedProject } from '../components/FeaturedProject';
 import { ProjectSection } from '../components/ProjectSection';
@@ -35,10 +16,7 @@ import {
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start start', 'end end'],
-  });
+  // Removed unused scrollYProgress
 
   const featuredProject = getFeaturedProject();
   const webProjects = getWebProjects();
@@ -231,7 +209,7 @@ export default function Home() {
             className="flex flex-col items-center text-center mb-16"
           >
             <h2 className="text-3xl sm:text-4xl font-bold glow-text mb-4">
-              Let's Connect
+              Let&apos;s Connect
             </h2>
             <p className="text-base sm:text-lg text-muted-foreground max-w-2xl">
               Ready to build something amazing together?
@@ -399,7 +377,7 @@ export default function Home() {
                   animate={{ opacity: 1, y: 0 }}
                   className="text-green-400 text-sm text-center p-3 bg-green-400/10 rounded-lg border border-green-400/20"
                 >
-                  ✅ Message sent successfully! I'll get back to you soon.
+                  ✅ Message sent successfully! I&apos;ll get back to you soon.
                 </motion.div>
               )}
 

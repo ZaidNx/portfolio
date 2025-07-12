@@ -80,22 +80,6 @@ export function ParallaxText({
   );
 }
 
-export function StickySection({
-  children,
-  className = '',
-  height = '100vh',
-}: {
-  children: ReactNode;
-  className?: string;
-  height?: string;
-}) {
-  return (
-    <div className={`sticky top-0 ${className}`} style={{ height }}>
-      {children}
-    </div>
-  );
-}
-
 export function ScrollProgress() {
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
@@ -109,33 +93,5 @@ export function ScrollProgress() {
       className="fixed top-0 left-0 right-0 h-1 bg-primary origin-left z-50"
       style={{ scaleX }}
     />
-  );
-}
-
-export function FloatingElement({
-  children,
-  className = '',
-  delay = 0,
-}: {
-  children: ReactNode;
-  className?: string;
-  delay?: number;
-}) {
-  return (
-    <motion.div
-      className={className}
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{
-        duration: 0.8,
-        delay,
-        type: 'spring',
-        stiffness: 100,
-        damping: 20,
-      }}
-      viewport={{ once: true, margin: '-100px' }}
-    >
-      {children}
-    </motion.div>
   );
 }
