@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import {
   Github,
   Linkedin,
@@ -43,6 +43,63 @@ export default function Home() {
   const featuredProject = getFeaturedProject();
   const webProjects = getWebProjects();
   const mobileProjects = getMobileProjects();
+
+  // Contact form state
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<
+    'idle' | 'success' | 'error'
+  >('idle');
+
+  // Handle form submission with Nodemailer API
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (isSubmitting) return;
+
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+        // Reset status after 3 seconds
+        setTimeout(() => setSubmitStatus('idle'), 3000);
+      } else {
+        throw new Error(result.error || 'Failed to send message');
+      }
+    } catch (error) {
+      console.error('Email send failed:', error);
+      setSubmitStatus('error');
+      // Reset status after 3 seconds
+      setTimeout(() => setSubmitStatus('idle'), 3000);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  // Handle input changes
+  const handleInputChange = (field: string, value: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
+  };
 
   return (
     <div
@@ -253,55 +310,109 @@ export default function Home() {
 
             {/* Right Column - Contact Form */}
             <motion.form
+              onSubmit={handleSubmit}
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
               viewport={{ once: true }}
               className="flex flex-col space-y-6 w-full px-8 lg:px-12 lg:justify-self-end lg:max-w-md"
             >
-              {[
-                { type: 'text', placeholder: 'Your Name' },
-                { type: 'email', placeholder: 'Your Email' },
-                { type: 'textarea', placeholder: 'Your Message' },
-              ].map((field, index) => (
-                <motion.div
-                  key={field.placeholder}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1, duration: 0.5 }}
-                  viewport={{ once: true }}
-                  className="w-full"
-                  style={{ marginBottom: '12px' }}
-                >
-                  {field.type === 'textarea' ? (
-                    <textarea
-                      placeholder={field.placeholder}
-                      rows={4}
-                      className="w-full p-4 bg-muted border border-border rounded-lg focus:border-primary focus:outline-none font-mono resize-none"
-                      style={{ paddingLeft: '6px' }}
-                    />
-                  ) : (
-                    <input
-                      type={field.type}
-                      placeholder={field.placeholder}
-                      className="w-full p-4 bg-muted border border-border rounded-lg focus:border-primary focus:outline-none font-mono"
-                      style={{ paddingLeft: '6px' }}
-                    />
-                  )}
-                </motion.div>
-              ))}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1, duration: 0.5 }}
+                viewport={{ once: true }}
+                className="w-full"
+                style={{ marginBottom: '12px' }}
+              >
+                <input
+                  type="text"
+                  placeholder="Your Name"
+                  value={formData.name}
+                  onChange={(e) => handleInputChange('name', e.target.value)}
+                  required
+                  className="w-full p-4 bg-muted border border-border rounded-lg focus:border-primary focus:outline-none font-mono"
+                  style={{ paddingLeft: '6px' }}
+                />
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.5 }}
+                viewport={{ once: true }}
+                className="w-full"
+                style={{ marginBottom: '12px' }}
+              >
+                <input
+                  type="email"
+                  placeholder="Your Email"
+                  value={formData.email}
+                  onChange={(e) => handleInputChange('email', e.target.value)}
+                  required
+                  className="w-full p-4 bg-muted border border-border rounded-lg focus:border-primary focus:outline-none font-mono"
+                  style={{ paddingLeft: '6px' }}
+                />
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3, duration: 0.5 }}
+                viewport={{ once: true }}
+                className="w-full"
+                style={{ marginBottom: '12px' }}
+              >
+                <textarea
+                  placeholder="Your Message"
+                  rows={4}
+                  value={formData.message}
+                  onChange={(e) => handleInputChange('message', e.target.value)}
+                  required
+                  className="w-full p-4 bg-muted border border-border rounded-lg focus:border-primary focus:outline-none font-mono resize-none"
+                  style={{ paddingLeft: '6px' }}
+                />
+              </motion.div>
+
               <motion.button
                 type="submit"
-                className="w-full px-8 py-4 bg-primary text-background font-mono font-semibold rounded-lg glow hover:scale-105 transition-transform mb-6"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                disabled={isSubmitting}
+                className={`w-full px-8 py-4 font-mono font-semibold rounded-lg glow transition-transform mb-6 ${
+                  isSubmitting
+                    ? 'bg-muted text-muted-foreground cursor-not-allowed'
+                    : 'bg-primary text-background hover:scale-105'
+                }`}
+                whileHover={!isSubmitting ? { scale: 1.05 } : {}}
+                whileTap={!isSubmitting ? { scale: 0.95 } : {}}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.5 }}
                 viewport={{ once: true }}
               >
-                Send Message
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </motion.button>
+
+              {/* Status Messages */}
+              {submitStatus === 'success' && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-green-400 text-sm text-center p-3 bg-green-400/10 rounded-lg border border-green-400/20"
+                >
+                  ✅ Message sent successfully! I'll get back to you soon.
+                </motion.div>
+              )}
+
+              {submitStatus === 'error' && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-red-400 text-sm text-center p-3 bg-red-400/10 rounded-lg border border-red-400/20"
+                >
+                  ❌ Failed to send message. Please try again or email me
+                  directly.
+                </motion.div>
+              )}
             </motion.form>
           </div>
         </div>
