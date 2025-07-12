@@ -1,8 +1,8 @@
 'use client';
 
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useRef, useState } from 'react';
-import { Github, Linkedin, Mail, Download } from 'lucide-react';
+import { Github, Linkedin, Mail } from 'lucide-react';
 import Image from 'next/image';
 import { ParallaxText, ScrollProgress } from '../components/ScrollSection';
 import { AboutSection } from '../components/AboutSection';
