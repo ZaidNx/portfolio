@@ -89,6 +89,8 @@ export default function Home() {
 
       {/* Hero Section - Centered Image with Text on Sides */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-8 sm:px-12 lg:px-16 bg-animated-gradient">
+        {/* Top gradient overlay for smooth transition */}
+        <div className="absolute top-0 left-0 right-0 h-64 bg-gradient-to-b from-[#0a0515] to-transparent pointer-events-none"></div>
         {/* Background gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-background/20 via-background/10 to-primary/5"></div>
 
@@ -99,7 +101,7 @@ export default function Home() {
             src="/zaid-hero.png"
             alt="Zaid Hero Background"
             fill
-            className="object-contain opacity-20"
+            className="object-contain opacity-10"
             priority
           />
           {/* Light overlay for better text readability */}
@@ -134,7 +136,10 @@ export default function Home() {
             className="flex-1 flex items-center justify-start lg:pl-8 mt-8 lg:mt-0"
           >
             <div className="text-center lg:text-left">
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-foreground glow-text mb-2 drop-shadow-lg">
+              <h1
+                className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-foreground glow-text mb-2 drop-shadow-lg"
+                style={{ wordSpacing: '0.3em', letterSpacing: '-0.05em' }}
+              >
                 I AM ZAID
               </h1>
               <h3 className="text-lg md:text-xl lg:text-2xl font-mono text-primary drop-shadow-lg max-w-2xl">
@@ -151,7 +156,7 @@ export default function Home() {
         <div className="absolute top-1/2 left-10 w-1 h-1 bg-primary/60 rounded-full animate-pulse delay-500"></div>
 
         {/* Gradient overlay at the bottom - animated gradient to purple-blue */}
-        <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-dark-purple to-transparent"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-[#0a0515] to-transparent pointer-events-none"></div>
       </section>
 
       {/* About Section */}
@@ -167,7 +172,7 @@ export default function Home() {
           <div className="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-muted to-transparent"></div>
 
           {/* Gradient overlay at the bottom - grey to black */}
-          <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-muted to-transparent"></div>
+          <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-muted to-transparent pointer-events-none"></div>
 
           <div className="max-w-7xl mx-auto w-full relative z-10">
             <motion.div
@@ -175,12 +180,12 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="text-center mb-16"
+              className="text-center mb-16 w-full"
             >
               <h2 className="text-3xl sm:text-4xl font-bold glow-text mb-4">
                 Featured Projects
               </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto pb-4">
+              <p className="block text-lg text-muted-foreground max-w-2xl mx-auto text-center pb-4">
                 My latest and most impactful work
               </p>
             </motion.div>
@@ -218,6 +223,8 @@ export default function Home() {
 
       {/* Contact Section with Fixed Layout */}
       <section className="py-20 px-8 sm:px-12 lg:px-16 relative bg-gradient-navy-purple">
+        {/* Top gradient overlay for smooth transition from previous section */}
+        <div className="absolute top-0 left-0 right-0 h-64 bg-gradient-to-b from-gradient-navy-purple to-transparent pointer-events-none"></div>
         {/* Background container to prevent content bleeding through */}
         <div className="absolute inset-0 bg-gradient-navy-purple"></div>
 

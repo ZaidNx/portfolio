@@ -3,20 +3,20 @@
 :root {
   --background: #0a0a0a;
   --foreground: #ededed;
-  --primary: #00ff88;
+  --primary: #00cc6a;
   --secondary: #0066ff;
   --accent: #ff0066;
   --muted: #1a1a1a;
   --border: #333333;
   --glow: rgba(0, 255, 136, 0.3);
 
-  /* New colorful background variables */
-  --dark-purple: #1a0b2e;
-  --dark-blue: #0f172a;
-  --teal: #0d4a4a;
-  --dark-grey: #1f2937;
-  --navy: #0f1419;
-  --deep-purple: #2d1b69;
+  /* New colorful background variables - much darker and more subtle */
+  --dark-purple: #0a0515;
+  --dark-blue: #050a12;
+  --teal: #031a1a;
+  --dark-grey: #0a0f1a;
+  --navy: #050709;
+  --deep-purple: #0f0818;
 }
 
 @theme inline {
@@ -207,10 +207,12 @@ body {
     var(--dark-purple),
     var(--dark-blue),
     var(--teal),
-    var(--deep-purple)
+    var(--deep-purple),
+    var(--navy),
+    var(--dark-grey)
   );
-  background-size: 400% 400%;
-  animation: gradientShift 15s ease infinite;
+  background-size: 600% 600%;
+  animation: gradientShift 20s ease infinite;
 }
 
 /* Section horizontal padding */
