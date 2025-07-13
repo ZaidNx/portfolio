@@ -1,5 +1,7 @@
 'use client';
 
+import { motion } from 'framer-motion';
+
 export function AboutSection() {
   const techStack = {
     frontend: [
@@ -46,12 +48,17 @@ export function AboutSection() {
         <div className="flex flex-col md:flex-row gap-10 md:gap-16 items-start w-full">
           {/* Profile Picture */}
           <div className="flex-shrink-0 flex justify-center items-start w-full md:w-auto">
-            <img
-              src="/profile-placeholder.jpg"
-              alt="Zaid Naeem Profile"
-              className="rounded-full border-6 border-primary shadow-xl w-40 h-40 sm:w-48 sm:h-48 lg:w-56 lg:h-56 object-cover bg-muted"
-              style={{ objectPosition: 'center' }}
-            />
+            <div className="rounded-[3rem] border-6 border-primary shadow-xl w-44 h-56 sm:w-52 sm:h-64 lg:w-60 lg:h-72 overflow-hidden bg-muted">
+              <img
+                src="/Zaid-Profile-Picture.JPG"
+                alt="Zaid Naeem Profile"
+                className="w-full h-full object-cover"
+                style={{
+                  objectPosition: 'center 50%',
+                  transform: 'scale(1.5) translateX(6px)',
+                }}
+              />
+            </div>
           </div>
           {/* About Text */}
           <div className="flex-1 space-y-6 w-full">
@@ -62,23 +69,38 @@ export function AboutSection() {
               Full-Stack Software Engineer
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Full-Stack Software Engineer with over{' '}
-              <span className="text-primary font-semibold">3 years</span> of
-              experience building and scaling SaaS applications. Currently
-              working at{' '}
-              <span className="text-primary font-semibold">7Vals</span>, Zaid
-              has contributed to platforms like{' '}
+              Full-Stack Engineer with{' '}
+              <span className="text-primary font-semibold">3+ years</span> of
+              experience building high-impact{' '}
+              <span className="text-primary font-semibold">SaaS products</span>{' '}
+              across{' '}
+              <span className="text-primary font-semibold">web and mobile</span>
+              . I specialize in{' '}
+              <span className="text-primary font-semibold">MERN</span>,{' '}
+              <span className="text-primary font-semibold">React</span>,{' '}
+              <span className="text-primary font-semibold">MongoDB</span>,{' '}
+              <span className="text-primary font-semibold">Express.js</span>,{' '}
+              <span className="text-primary font-semibold">Node.js</span>,{' '}
+              <span className="text-primary font-semibold">React Native</span>,{' '}
+              <span className="text-primary font-semibold">Ruby on Rails</span>,
+              and <span className="text-primary font-semibold">TypeScript</span>
+              —developing fast, intuitive, and scalable user experiences. My
+              work spans{' '}
               <span className="text-primary font-semibold">
-                EZOfficeInventory
-              </span>
-              , <span className="text-primary font-semibold">EZRentOut</span>,{' '}
-              <span className="text-primary font-semibold">AssetSonar</span>,
-              and <span className="text-primary font-semibold">EZO CMMS</span>,
-              used globally by{' '}
+                enterprise platforms
+              </span>{' '}
+              used by{' '}
+              <span className="text-primary font-semibold">Fortune 500s</span>,
+              as well as custom client solutions. Whether you're a{' '}
+              <span className="text-primary font-semibold">startup</span> or a{' '}
               <span className="text-primary font-semibold">
-                Fortune 500 companies
+                scaling business
               </span>
-              .
+              , I bring{' '}
+              <span className="text-primary font-semibold">clean code</span>,{' '}
+              <span className="text-primary font-semibold">speed</span>, and{' '}
+              <span className="text-primary font-semibold">reliability</span> to
+              the table.
             </p>
             {/* Personal Focus */}
             <div
@@ -98,9 +120,16 @@ export function AboutSection() {
         </div>
 
         {/* Row 2: Tech Stack (full width, below row 1) */}
-        <div className="mt-16 w-full">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.5 }}
+          viewport={{ once: true }}
+          className="w-full"
+          style={{ marginTop: '32px !important' }}
+        >
           <div className="space-y-6">
-            <h3 className="text-2xl font-bold text-foreground flex items-center gap-2">
+            <h3 className="text-3xl font-bold text-foreground flex items-center justify-center gap-3">
               <span className="text-primary">🧑‍💻</span>
               Tech Stack
             </h3>
@@ -124,7 +153,7 @@ export function AboutSection() {
               ))}
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Row 3: Major Highlights (unchanged) */}
         <div className="mt-20 w-full">

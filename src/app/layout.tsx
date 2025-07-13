@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
+import { useEffect } from 'react';
+import { notifyVisit } from '../components/notifyVisit';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -26,6 +28,9 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  useEffect(() => {
+    notifyVisit();
+  }, []);
   return (
     <html lang="en">
       <body
