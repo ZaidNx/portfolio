@@ -23,11 +23,8 @@ export function ProjectSection({
       <div className="absolute inset-0 bg-gradient-grey-teal"></div>
       <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-muted to-transparent pointer-events-none"></div>
 
-      {/* Gradient overlay at the top - grey to black */}
-      <div className="absolute top-0 left-0 right-0 h-64 bg-gradient-to-b from-gradient-grey-teal to-transparent pointer-events-none"></div>
-
-      {/* Gradient overlay at the bottom - black to grey */}
-      <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-gradient-grey-teal to-transparent pointer-events-none"></div>
+      {/* Gradient overlay at the top - smooth transition */}
+      <div className="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-muted to-transparent pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto w-full relative z-10">
         {/* Section Header */}
