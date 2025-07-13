@@ -9,7 +9,7 @@ export async function notifyVisit() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ userAgent, visitTime }),
     });
-  } catch (e) {
+  } catch {
     // Fail silently
   }
 }

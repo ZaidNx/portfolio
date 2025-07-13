@@ -91,7 +91,7 @@ export function AboutSection() {
               </span>{' '}
               used by{' '}
               <span className="text-primary font-semibold">Fortune 500s</span>,
-              as well as custom client solutions. Whether you're a{' '}
+              as well as custom client solutions. Whether you&apos;re a{' '}
               <span className="text-primary font-semibold">startup</span> or a{' '}
               <span className="text-primary font-semibold">
                 scaling business
