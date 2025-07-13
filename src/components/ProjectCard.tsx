@@ -279,6 +279,20 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
           </motion.div>
         </div>
       </motion.div>
+
+      {/* Gorgeous Open Web App Button for Web Projects */}
+      {project.category === 'web' && project.liveUrl && (
+        <a
+          href={project.liveUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group w-full flex items-center justify-center gap-2 py-3 px-6 rounded-lg bg-gradient-to-r from-primary/80 via-primary/60 to-primary/80 text-background font-semibold text-lg shadow-lg backdrop-blur border border-primary/30 transition hover:scale-105 hover:shadow-2xl hover:bg-primary hover:text-white active:scale-100 mt-6 mb-2"
+          style={{}}
+        >
+          <span>Open Web App</span>
+          <ExternalLink className="w-5 h-5 group-hover:translate-x-1 transition" />
+        </a>
+      )}
     </motion.div>
   );
 }
