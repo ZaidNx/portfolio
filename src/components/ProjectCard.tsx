@@ -147,11 +147,12 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
                   transition={{ delay: index * 0.1 + 0.4, duration: 0.5 }}
                   viewport={{ once: true }}
                   style={{
-                    width: '160px',
-                    height: '48px',
+                    width: '120px',
+                    height: '36px',
                     padding: 0,
                     background: 'none',
                     border: 'none',
+                    marginRight: '2px !important',
                   }}
                 >
                   <img
@@ -178,8 +179,8 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
                   transition={{ delay: index * 0.1 + 0.5, duration: 0.5 }}
                   viewport={{ once: true }}
                   style={{
-                    width: '160px',
-                    height: '48px',
+                    width: '120px',
+                    height: '40px',
                     padding: 0,
                     background: 'none',
                     border: 'none',
