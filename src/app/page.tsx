@@ -240,8 +240,8 @@ export default function Home() {
                   Get in Touch
                 </h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  I'm always interested in new opportunities and exciting
-                  projects. Let's discuss how we can work together!
+                  I&apos;m always interested in new opportunities and exciting
+                  projects. Let&apos;s discuss how we can work together!
                 </p>
               </div>
               <div className="flex flex-col space-y-8">
