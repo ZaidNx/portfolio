@@ -88,9 +88,9 @@ export default function Home() {
       <ScrollProgress />
 
       {/* Hero Section - Centered Image with Text on Sides */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-8 sm:px-12 lg:px-16 bg-background">
-        {/* Background gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-primary/10"></div>
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-8 sm:px-12 lg:px-16 bg-animated-gradient">
+        {/* Background gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-background/20 via-background/10 to-primary/5"></div>
 
         {/* Main content container - centered */}
         {/* Background Image */}
@@ -156,9 +156,9 @@ export default function Home() {
 
       {/* Featured Projects Section */}
       {featuredProjects.length > 0 && (
-        <section className="py-20 px-8 sm:px-12 lg:px-16 bg-background relative min-h-screen flex items-center justify-center">
+        <section className="py-20 px-8 sm:px-12 lg:px-16 bg-gradient-teal-grey relative min-h-screen flex items-center justify-center">
           {/* Background container to prevent content bleeding through */}
-          <div className="absolute inset-0 bg-background"></div>
+          <div className="absolute inset-0 bg-gradient-teal-grey"></div>
 
           {/* Gradient overlay at the top - black to grey */}
           <div className="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-muted to-transparent"></div>
@@ -214,9 +214,9 @@ export default function Home() {
       />
 
       {/* Contact Section with Fixed Layout */}
-      <section className="py-20 px-8 sm:px-12 lg:px-16 relative bg-background">
+      <section className="py-20 px-8 sm:px-12 lg:px-16 relative bg-gradient-navy-purple">
         {/* Background container to prevent content bleeding through */}
-        <div className="absolute inset-0 bg-background"></div>
+        <div className="absolute inset-0 bg-gradient-navy-purple"></div>
 
         {/* Gradient overlay at the top - grey to black */}
         <div className="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-muted to-transparent"></div>

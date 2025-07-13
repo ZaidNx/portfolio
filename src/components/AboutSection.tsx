@@ -31,9 +31,9 @@ export function AboutSection() {
   ];
 
   return (
-    <section className="min-h-screen bg-background relative flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20">
+    <section className="min-h-screen bg-gradient-purple-blue relative flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20">
       {/* Background container to prevent content bleeding through */}
-      <div className="absolute inset-0 bg-background"></div>
+      <div className="absolute inset-0 bg-gradient-purple-blue"></div>
 
       {/* Gradient overlay at the bottom - black to grey */}
       <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-muted to-transparent"></div>

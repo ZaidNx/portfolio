@@ -9,6 +9,14 @@
   --muted: #1a1a1a;
   --border: #333333;
   --glow: rgba(0, 255, 136, 0.3);
+
+  /* New colorful background variables */
+  --dark-purple: #1a0b2e;
+  --dark-blue: #0f172a;
+  --teal: #0d4a4a;
+  --dark-grey: #1f2937;
+  --navy: #0f1419;
+  --deep-purple: #2d1b69;
 }
 
 @theme inline {
@@ -132,6 +140,77 @@ body {
 
 .float {
   animation: float 3s ease-in-out infinite;
+}
+
+/* Colorful gradient backgrounds */
+.bg-gradient-purple-blue {
+  background: linear-gradient(
+    135deg,
+    var(--dark-purple) 0%,
+    var(--dark-blue) 50%,
+    var(--navy) 100%
+  );
+}
+
+.bg-gradient-teal-grey {
+  background: linear-gradient(
+    135deg,
+    var(--teal) 0%,
+    var(--dark-grey) 50%,
+    var(--muted) 100%
+  );
+}
+
+.bg-gradient-blue-purple {
+  background: linear-gradient(
+    135deg,
+    var(--dark-blue) 0%,
+    var(--deep-purple) 50%,
+    var(--dark-purple) 100%
+  );
+}
+
+.bg-gradient-grey-teal {
+  background: linear-gradient(
+    135deg,
+    var(--dark-grey) 0%,
+    var(--teal) 50%,
+    var(--dark-blue) 100%
+  );
+}
+
+.bg-gradient-navy-purple {
+  background: linear-gradient(
+    135deg,
+    var(--navy) 0%,
+    var(--dark-purple) 50%,
+    var(--deep-purple) 100%
+  );
+}
+
+/* Animated gradient backgrounds */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.bg-animated-gradient {
+  background: linear-gradient(
+    -45deg,
+    var(--dark-purple),
+    var(--dark-blue),
+    var(--teal),
+    var(--deep-purple)
+  );
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
 }
 
 /* Section horizontal padding */
