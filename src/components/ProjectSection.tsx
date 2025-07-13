@@ -22,6 +22,12 @@ export function ProjectSection({
       {/* Background container to prevent content bleeding through */}
       <div className="absolute inset-0 bg-background"></div>
 
+      {/* Gradient overlay at the top - grey to black */}
+      <div className="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-muted to-transparent"></div>
+
+      {/* Gradient overlay at the bottom - black to grey */}
+      <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-muted to-transparent"></div>
+
       <div className="max-w-7xl mx-auto w-full relative z-10">
         {/* Section Header */}
         <motion.div
@@ -63,7 +69,11 @@ export function ProjectSection({
           viewport={{ once: true }}
         >
           {projects.map((project, index) => (
-            <div key={project.id} className="w-full max-w-sm">
+            <div
+              key={project.id}
+              className="w-full max-w-sm"
+              style={{ marginBottom: '4rem !important' }}
+            >
               <ProjectCard project={project} index={index} />
             </div>
           ))}

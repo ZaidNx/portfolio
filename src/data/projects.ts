@@ -18,39 +18,59 @@ export const projects: Project[] = [
     id: 'stockpioneer',
     title: 'StockPioneer – MERN Inventory Manager',
     description:
-      'A full-stack inventory tracking solution for retailers and SMBs.',
+      'A full-stack, cloud-based inventory tracking system designed for retailers and small businesses. StockPioneer helps manage stock movement, suppliers, and real-time analytics across multiple business locations.',
     features: [
-      'Inventory check-in/out, return, damage, sale',
-      'Multi-location & supplier management',
-      'Real-time dashboards & action logs',
-      'JWT-secured login, cloud-first architecture',
+      'Full inventory lifecycle: check-in/out, return, damage, sale',
+      'Multi-location tracking & linked supplier profiles',
+      'Visual dashboards with low-stock alerts & trends',
+      'Action logs with real-time activity tracking',
+      'Add/edit/delete items with quantity, category & pricing',
+      'JWT-auth with protected routes and role-based access',
+      'Responsive UI with dark mode support',
+      'Built-in data validations and toast notifications',
     ],
-    techStack: ['MERN Stack', 'TailwindCSS'],
+    techStack: [
+      'MongoDB',
+      'Express.js',
+      'React.js',
+      'Node.js',
+      'TailwindCSS',
+      'JWT',
+      'Mongoose',
+      'Toastify',
+    ],
     liveUrl: 'https://stockpioneer-backend.onrender.com',
     demoUrl: 'https://www.youtube.com/watch?v=klnyU4ILK8Y',
     category: 'featured',
   },
   {
     id: 'intelliserve-crm',
-    title: 'IntelliServe CRM – Full-Stack Appointment & Service Management',
+    title: 'IntelliServe CRM – Service Business Manager',
     description:
-      'A robust, full-stack CRM application tailored for service-based businesses like mechanics, beauticians, and dentists.',
+      'A modern, full-stack CRM solution tailored for small, service-based businesses. IntelliServe simplifies daily operations with real-time scheduling, customer engagement, and revenue analytics—all from an intuitive, mobile-responsive interface. Designed for studios, salons, and consultancies, it streamlines client management and boosts operational efficiency.',
     features: [
-      'End-to-end customer relationship management',
-      'Appointment scheduling with public booking interface',
-      'Multi-business type support (Mechanic, Beautician, Dentist, Tutor)',
-      'Dashboard with insights, services management, and customer tracking',
-      'AI chatbot for customer queries (WIP)',
+      '📅 Appointment scheduling with time-slot management',
+      '👥 Customer tracking with insights on growth & retention',
+      '🛠️ Manage services offered with dynamic pricing support',
+      '📈 Business performance dashboards: revenue, satisfaction, booking rate',
+      '📊 Analytics widgets with visual insights & KPIs',
+      '🔐 Secure login and user roles (Admin, Manager, etc.)',
+      '🖥️ Responsive UI with dark mode support',
+      '📨 Email reminder integrations for appointments (extendable)',
     ],
     techStack: [
       'React',
-      'Vite',
+      'TypeScript',
       'TailwindCSS',
       'Node.js',
-      'Express',
-      'MongoDB Atlas',
+      'Express.js',
+      'MongoDB',
+      'Vite',
+      'Toastify',
+      'Day.js',
+      'Chart.js',
     ],
-    liveUrl: 'https://intelliserve-crm.onrender.com',
+    liveUrl: 'https://intelliservecrm.onrender.com/',
     demoUrl: 'https://www.youtube.com/watch?v=nsMJt55dDmM',
     category: 'featured',
   },
@@ -164,9 +184,18 @@ export const projects: Project[] = [
   },
 ];
 
-export const getFeaturedProject = () =>
-  projects.find((p) => p.category === 'featured');
-export const getWebProjects = () =>
-  projects.filter((p) => p.category === 'web');
-export const getMobileProjects = () =>
-  projects.filter((p) => p.category === 'mobile');
+export function getFeaturedProject(): Project | null {
+  return projects.find((project) => project.category === 'featured') || null;
+}
+
+export function getFeaturedProjects(): Project[] {
+  return projects.filter((project) => project.category === 'featured');
+}
+
+export function getWebProjects(): Project[] {
+  return projects.filter((project) => project.category === 'web');
+}
+
+export function getMobileProjects(): Project[] {
+  return projects.filter((project) => project.category === 'mobile');
+}

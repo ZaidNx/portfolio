@@ -196,3 +196,19 @@ footer.py-12.px-8.sm\:px-12.lg\:px-16.border-t.border-border.bg-background.relat
   padding-left: 20px;
   padding-bottom: 16px;
 }
+
+.ai-style-change-1.bg-muted.p-8.rounded-lg.border.border-border.w-full {
+  margin-top: 8px;
+}
+
+/* Tech stack text padding */
+.px-3.sm\:px-4.py-2.sm\:py-3.bg-background.text-sm.font-mono.rounded-lg.border.border-border.text-muted-foreground.hover\:text-primary.hover\:border-primary.transition-colors {
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+/* AboutSection tech stack text padding */
+.px-4.py-2.bg-muted.text-sm.font-mono.rounded.border.border-border.text-muted-foreground.hover\:text-primary.hover\:border-primary.transition-colors {
+  padding-left: 4px;
+  padding-right: 4px;
+}

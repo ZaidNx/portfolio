@@ -17,18 +17,26 @@ export function AboutSection() {
   };
 
   const highlights = [
-    'Revamped 4 legacy SaaS apps from HTML/ERB to modern React + Redux',
-    'Built a custom Offline Sync Engine for React Native with support for background jobs, queuing, and error handling',
-    'Developed RESTful APIs in Rails with RSpec test coverage',
-    'Handled performance optimizations, job queues, audit trails, sync logs',
-    'Designed scalable UI flows, reusable components, and high-quality UX',
-    'Mentored juniors, conducted code reviews, and led knowledge sessions',
+    '🧠 Architected a modular offline-sync engine for React Native that handled CRUD queuing, retries, race conditions, and eventual consistency with backend',
+    '🔐 Implemented JWT-secured login flows and role-based access control (RBAC) for web and mobile',
+    '📊 Built real-time dashboards and insight widgets powered by backend analytics and cron jobs',
+    '📥 Integrated email notifications and webhooks for appointment confirmations and reminders',
+    '🧾 Developed PDF generation & download workflows for invoices and receipts',
+    '📦 Set up dynamic form builders and reusable component libraries in React',
+    '🔍 Delivered smart filtering and search UIs using debounce, tag selectors, and client-server sync',
+    '🚦 Built custom rate limiters and validation logic to ensure safe backend job processing',
+    '🧪 Covered all major business logic with unit, integration, and feature specs in RSpec & Jest',
+    '🌐 Created a public appointment booking portal with availability-based time slot filtering',
+    '🤖 Experimented with custom chatbot UI, fetching dynamic data from business settings',
   ];
 
   return (
     <section className="min-h-screen bg-background relative flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20">
       {/* Background container to prevent content bleeding through */}
       <div className="absolute inset-0 bg-background"></div>
+
+      {/* Gradient overlay at the bottom - black to grey */}
+      <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-muted to-transparent"></div>
 
       <div className="max-w-7xl mx-auto w-full relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start w-full">
@@ -104,24 +112,51 @@ export function AboutSection() {
                 ))}
               </div>
             </div>
+          </div>
+        </div>
 
-            {/* Major Highlights */}
-            <div className="space-y-6 mt-16 ai-style-change-1">
-              <h3 className="text-2xl font-bold text-foreground flex items-center gap-2">
-                <span className="text-primary">🛠️</span>
-                Major Highlights
-              </h3>
-              <ul className="space-y-4">
-                {highlights.map((highlight, idx) => (
-                  <li
+        {/* Major Highlights - Centered Section */}
+        <div className="mt-20 w-full">
+          <div className="text-center mb-12" style={{ paddingTop: '32px' }}>
+            <h3 className="text-3xl font-bold text-foreground flex items-center justify-center gap-3">
+              <span className="text-primary">🛠️</span>
+              Major Highlights
+            </h3>
+          </div>
+
+          {/* Two-column layout for highlights */}
+          <div
+            className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto"
+            style={{ paddingTop: '24px' }}
+          >
+            {/* Left Column */}
+            <div className="space-y-4">
+              {highlights
+                .slice(0, Math.ceil(highlights.length / 2))
+                .map((highlight, idx) => (
+                  <div
                     key={idx}
                     className="text-muted-foreground flex items-start gap-4"
                   >
                     <span className="text-primary mt-1 text-sm">•</span>
-                    <span>{highlight}</span>
-                  </li>
+                    <span className="leading-relaxed">{highlight}</span>
+                  </div>
                 ))}
-              </ul>
+            </div>
+
+            {/* Right Column */}
+            <div className="space-y-4">
+              {highlights
+                .slice(Math.ceil(highlights.length / 2))
+                .map((highlight, idx) => (
+                  <div
+                    key={idx + Math.ceil(highlights.length / 2)}
+                    className="text-muted-foreground flex items-start gap-4"
+                  >
+                    <span className="text-primary mt-1 text-sm">•</span>
+                    <span className="leading-relaxed">{highlight}</span>
+                  </div>
+                ))}
             </div>
           </div>
         </div>

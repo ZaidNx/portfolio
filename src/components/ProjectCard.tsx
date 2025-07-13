@@ -30,7 +30,15 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
         transition={{ type: 'spring', stiffness: 300 }}
       >
         {/* Project Header */}
-        <div className="p-6 border-b border-border m-4">
+        <div
+          className="border-b border-border m-4"
+          style={{
+            paddingLeft: '12px !important',
+            paddingRight: '12px !important',
+            paddingTop: '12px !important',
+            paddingBottom: '12px !important',
+          }}
+        >
           <div className="flex items-start justify-between mb-3">
             <motion.h3
               className="text-xl font-bold text-foreground group-hover:text-primary transition-colors flex-1 pr-4"
@@ -106,7 +114,13 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
         {/* App Store Buttons for Mobile Projects */}
         {isMobileProject && (project.iosUrl || project.androidUrl) && (
           <motion.div
-            className="p-6 border-b border-border m-4"
+            className="border-b border-border m-4"
+            style={{
+              paddingLeft: '12px !important',
+              paddingRight: '12px !important',
+              paddingTop: '12px !important',
+              paddingBottom: '12px !important',
+            }}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 + 0.3, duration: 0.5 }}
@@ -170,7 +184,15 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
         )}
 
         {/* Project Features */}
-        <div className="p-6 m-4">
+        <div
+          className="m-4"
+          style={{
+            paddingLeft: '12px !important',
+            paddingRight: '12px !important',
+            paddingTop: '12px !important',
+            paddingBottom: '12px !important',
+          }}
+        >
           <motion.div
             className="mb-4"
             initial={{ opacity: 0, y: 20 }}
@@ -222,7 +244,13 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
                     duration: 0.5,
                   }}
                   viewport={{ once: true }}
-                  className="px-2 py-1 bg-background text-xs font-mono rounded border border-border text-muted-foreground hover:text-primary hover:border-primary transition-colors"
+                  className="bg-background text-xs font-mono rounded border border-border text-muted-foreground hover:text-primary hover:border-primary transition-colors"
+                  style={{
+                    paddingLeft: '6px !important',
+                    paddingRight: '6px !important',
+                    paddingTop: '1px !important',
+                    paddingBottom: '1px !important',
+                  }}
                 >
                   {tech}
                 </motion.span>

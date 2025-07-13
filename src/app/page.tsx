@@ -9,16 +9,17 @@ import { AboutSection } from '../components/AboutSection';
 import { FeaturedProject } from '../components/FeaturedProject';
 import { ProjectSection } from '../components/ProjectSection';
 import {
-  getFeaturedProject,
+  getFeaturedProjects,
   getWebProjects,
   getMobileProjects,
+  Project,
 } from '../data/projects';
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
   // Removed unused scrollYProgress
 
-  const featuredProject = getFeaturedProject();
+  const featuredProjects = getFeaturedProjects();
   const webProjects = getWebProjects();
   const mobileProjects = getMobileProjects();
 
@@ -153,11 +154,17 @@ export default function Home() {
       {/* About Section */}
       <AboutSection />
 
-      {/* Featured Project Section */}
-      {featuredProject && (
-        <section className="py-20 px-8 sm:px-12 lg:px-16 bg-muted relative min-h-screen flex items-center justify-center">
+      {/* Featured Projects Section */}
+      {featuredProjects.length > 0 && (
+        <section className="py-20 px-8 sm:px-12 lg:px-16 bg-background relative min-h-screen flex items-center justify-center">
           {/* Background container to prevent content bleeding through */}
-          <div className="absolute inset-0 bg-muted"></div>
+          <div className="absolute inset-0 bg-background"></div>
+
+          {/* Gradient overlay at the top - black to grey */}
+          <div className="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-muted to-transparent"></div>
+
+          {/* Gradient overlay at the bottom - grey to black */}
+          <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-muted to-transparent"></div>
 
           <div className="max-w-7xl mx-auto w-full relative z-10">
             <motion.div
@@ -168,13 +175,24 @@ export default function Home() {
               className="text-center mb-16"
             >
               <h2 className="text-3xl sm:text-4xl font-bold glow-text mb-4">
-                Featured Project
+                Featured Projects
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto pb-4">
                 My latest and most impactful work
               </p>
             </motion.div>
-            <FeaturedProject project={featuredProject} />
+
+            <div className="space-y-32">
+              {featuredProjects.map((project: Project, index: number) => (
+                <div
+                  key={project.id}
+                  className="mb-16"
+                  style={{ marginBottom: '26px !important' }}
+                >
+                  <FeaturedProject project={project} />
+                </div>
+              ))}
+            </div>
           </div>
         </section>
       )}
@@ -199,6 +217,9 @@ export default function Home() {
       <section className="py-20 px-8 sm:px-12 lg:px-16 relative bg-background">
         {/* Background container to prevent content bleeding through */}
         <div className="absolute inset-0 bg-background"></div>
+
+        {/* Gradient overlay at the top - grey to black */}
+        <div className="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-muted to-transparent"></div>
 
         <div className="w-full relative z-10 pb-12">
           <motion.div
