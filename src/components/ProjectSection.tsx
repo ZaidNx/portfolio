@@ -18,7 +18,7 @@ export function ProjectSection({
   icon,
 }: ProjectSectionProps) {
   return (
-    <section className="py-20 px-8 sm:px-12 lg:px-16 relative bg-gradient-grey-teal min-h-screen flex items-center justify-center">
+    <section className="pt-8 pb-20 px-8 sm:px-12 lg:px-16 relative bg-gradient-grey-teal min-h-screen flex items-center justify-center">
       {/* Background container to prevent content bleeding through */}
       <div className="absolute inset-0 bg-gradient-grey-teal"></div>
       <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-muted to-transparent pointer-events-none"></div>
