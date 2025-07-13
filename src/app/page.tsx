@@ -432,19 +432,17 @@ export default function Home() {
         {/* Background container to prevent content bleeding through */}
         <div className="absolute inset-0 bg-background"></div>
 
-        <div className="max-w-7xl mx-auto w-full relative z-10 flex justify-center">
+        <div className="max-w-7xl mx-auto relative z-10 flex flex-col items-center justify-center">
           <ParallaxText speed={0.1}>
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="flex flex-col items-center space-y-6"
+              className="flex flex-col items-center space-y-6 text-center"
             >
-              <p className="text-muted-foreground font-mono text-center w-full">
-                --
-              </p>
-              <div className="flex flex-wrap justify-center gap-6 w-full">
+              <p className="text-muted-foreground font-mono text-center">--</p>
+              <div className="flex flex-wrap justify-center gap-6">
                 <motion.a
                   href="/resume.pdf"
                   className="text-muted-foreground hover:text-primary transition-colors font-mono"
@@ -464,7 +462,7 @@ export default function Home() {
                   GitHub
                 </motion.a>
               </div>
-              <p className="text-sm text-muted-foreground text-center w-full">
+              <p className="text-sm text-muted-foreground text-center">
                 © 2025 Zaid Naeem. All rights reserved.
               </p>
             </motion.div>

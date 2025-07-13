@@ -313,3 +313,15 @@ a.flex.items-center.gap-3.px-6.py-3.bg-background.border.border-border.rounded-l
   margin-right: 4px;
   padding-right: 0 !important; /* Using !important to override the pr-2 class */
 }
+
+.ai-style-change-2 {
+  /* Target the footer with these classes */
+  /* Use :is() for specificity in Tailwind JIT environments */
+}
+
+.ai-style-change-2
+  footer.py-12.px-8.sm\:px-12.lg\:px-16.border-t.border-border.bg-background.relative {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: flex-start !important;
+}
