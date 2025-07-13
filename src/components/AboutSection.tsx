@@ -35,6 +35,9 @@ export function AboutSection() {
       {/* Background container to prevent content bleeding through */}
       <div className="absolute inset-0 bg-gradient-purple-blue"></div>
 
+      {/* Gradient overlay at the top - animated gradient to purple-blue */}
+      <div className="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-dark-purple to-transparent"></div>
+
       {/* Gradient overlay at the bottom - black to grey */}
       <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-muted to-transparent"></div>
 

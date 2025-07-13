@@ -291,3 +291,23 @@ footer.py-12.px-8.sm\:px-12.lg\:px-16.border-t.border-border.bg-background.relat
   padding-left: 4px;
   padding-right: 4px;
 }
+
+/* App Store Button Styling */
+/* Target the specific anchor element (remove gap) */
+a.flex.items-center.gap-3.px-6.py-3.bg-background.border.border-border.rounded-lg.text-sm.font-medium.text-muted-foreground.hover\:text-primary.hover\:border-primary.transition-colors {
+  /* Remove or override the gap property set by gap-3 */
+  gap: 0 !important; /* Using !important to ensure it overrides the utility class if needed */
+}
+
+/* Target the icon (add margin-left) */
+a.flex.items-center.gap-3.px-6.py-3.bg-background.border.border-border.rounded-lg.text-sm.font-medium.text-muted-foreground.hover\:text-primary.hover\:border-primary.transition-colors
+  > svg.w-5.h-5 {
+  margin-left: 4px;
+}
+
+/* Target the text (add margin-right and remove padding-right) */
+a.flex.items-center.gap-3.px-6.py-3.bg-background.border.border-border.rounded-lg.text-sm.font-medium.text-muted-foreground.hover\:text-primary.hover\:border-primary.transition-colors
+  > span.pr-2 {
+  margin-right: 4px;
+  padding-right: 0 !important; /* Using !important to override the pr-2 class */
+}

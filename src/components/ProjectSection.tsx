@@ -72,7 +72,7 @@ export function ProjectSection({
             <div
               key={project.id}
               className="w-full max-w-sm"
-              style={{ marginBottom: '4rem !important' }}
+              style={{ marginBottom: '1rem !important' }}
             >
               <ProjectCard project={project} index={index} />
             </div>

@@ -149,6 +149,9 @@ export default function Home() {
         <div className="absolute top-20 left-20 w-2 h-2 bg-primary rounded-full animate-pulse"></div>
         <div className="absolute bottom-20 right-20 w-3 h-3 bg-secondary rounded-full animate-pulse delay-1000"></div>
         <div className="absolute top-1/2 left-10 w-1 h-1 bg-primary/60 rounded-full animate-pulse delay-500"></div>
+
+        {/* Gradient overlay at the bottom - animated gradient to purple-blue */}
+        <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-dark-purple to-transparent"></div>
       </section>
 
       {/* About Section */}
