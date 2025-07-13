@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
-import { useEffect } from 'react';
-import { notifyVisit } from '../components/notifyVisit';
+import VisitNotifier from '../components/VisitNotifier';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -28,14 +27,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  useEffect(() => {
-    notifyVisit();
-  }, []);
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased ai-style-change-2`}
       >
+        <VisitNotifier />
         {children}
       </body>
     </html>
