@@ -183,7 +183,7 @@ export default function Home() {
             </motion.div>
 
             <div className="space-y-32">
-              {featuredProjects.map((project: Project, index: number) => (
+              {featuredProjects.map((project: Project) => (
                 <div
                   key={project.id}
                   className="mb-16"
