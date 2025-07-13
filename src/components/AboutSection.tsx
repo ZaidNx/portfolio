@@ -33,7 +33,7 @@ export function AboutSection() {
       <div className="max-w-7xl mx-auto w-full relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start w-full">
           {/* Left Column - Profile */}
-          <div className="space-y-12 w-full">
+          <div className="space-y-12 w-full ai-style-change-1 ">
             {/* Profile Header */}
             <div className="space-y-6">
               <h1 className="text-4xl sm:text-5xl font-bold glow-text leading-tight">
@@ -43,7 +43,7 @@ export function AboutSection() {
                 Full-Stack Software Engineer
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Zaid Naeem is a Full-Stack Software Engineer with over{' '}
+                Full-Stack Software Engineer with over{' '}
                 <span className="text-primary font-semibold">3 years</span> of
                 experience building and scaling SaaS applications. Currently
                 working at{' '}
@@ -77,9 +77,9 @@ export function AboutSection() {
           </div>
 
           {/* Right Column - Tech Stack & Highlights */}
-          <div className="space-y-12 w-full">
+          <div className="space-y-12 w-full ai-style-change-1">
             {/* Tech Stack */}
-            <div className="space-y-6">
+            <div className="space-y-6 ai-style-change-1">
               <h3 className="text-2xl font-bold text-foreground flex items-center gap-2">
                 <span className="text-primary">🧑‍💻</span>
                 Tech Stack
