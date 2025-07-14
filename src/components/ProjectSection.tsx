@@ -3,9 +3,10 @@
 import { motion } from 'framer-motion';
 import { Project } from '../data/projects';
 import { ProjectCard } from './ProjectCard';
+import { ReactNode } from 'react';
 
 interface ProjectSectionProps {
-  title: string;
+  title: ReactNode;
   subtitle: string;
   projects: Project[];
   icon: string;
@@ -39,7 +40,7 @@ export function ProjectSection({
           className="text-center mb-16 w-full"
         >
           <motion.div
-            className="flex items-center justify-center gap-3 mb-4 w-full"
+            className="flex items-center justify-center gap-3 mb-4 w-full mobile-mt-20"
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}

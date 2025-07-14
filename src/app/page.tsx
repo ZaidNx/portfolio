@@ -182,10 +182,19 @@ export default function Home() {
               viewport={{ once: true }}
               className="text-center mb-16 w-full"
             >
-              <h2 className="text-3xl sm:text-4xl font-bold glow-text mb-4">
+              <h2 className="text-3xl sm:text-4xl font-bold glow-text mb-4 mobile-mt-20">
                 Featured Projects
               </h2>
-              <p className="block text-lg text-muted-foreground max-w-2xl mx-auto text-center pb-4">
+              <p
+                className="block text-lg text-muted-foreground max-w-2xl mx-auto text-center pb-4"
+                style={{
+                  display: 'block',
+                  marginBottom: '20px !important',
+                  marginLeft: 'auto !important',
+                  marginRight: 'auto !important',
+                  fontSize: '1.5rem',
+                }}
+              >
                 My latest and most impactful work
               </p>
             </motion.div>
@@ -195,7 +204,11 @@ export default function Home() {
                 <div
                   key={project.id}
                   className="mb-16"
-                  style={{ marginBottom: '26px !important' }}
+                  style={{
+                    marginBottom: '26px !important',
+                    marginLeft: '8px !important',
+                    marginRight: '8px !important',
+                  }}
                 >
                   <FeaturedProject project={project} />
                 </div>
@@ -215,7 +228,7 @@ export default function Home() {
 
       {/* Mobile Projects Section */}
       <ProjectSection
-        title="Mobile Projects"
+        title={<span className="mobile-mt-20">Mobile Projects</span>}
         subtitle="Cross-platform mobile applications with offline capabilities"
         projects={mobileProjects}
         icon="📱"
