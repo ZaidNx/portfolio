@@ -33,7 +33,7 @@ export function AboutSection() {
   ];
 
   return (
-    <section className="min-h-screen bg-gradient-purple-blue relative flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20">
+    <section className="min-h-screen bg-gradient-purple-blue relative flex items-center justify-center px-0 sm:px-0 lg:px-0 py-20">
       {/* Background container to prevent content bleeding through */}
       <div className="absolute inset-0 bg-gradient-purple-blue"></div>
 
@@ -43,7 +43,10 @@ export function AboutSection() {
       {/* Gradient overlay at the bottom - black to grey */}
       <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-muted to-transparent"></div>
 
-      <div className="max-w-7xl mx-auto w-full relative z-10">
+      <div
+        className="max-w-7xl mx-auto w-full relative z-10"
+        style={{ paddingLeft: '16px', paddingRight: '16px' }}
+      >
         {/* Row 1: Profile Picture (left) + About Text (right) */}
         <div className="flex flex-col md:flex-row gap-10 md:gap-16 items-start w-full">
           {/* Profile Picture */}

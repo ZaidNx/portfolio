@@ -18,7 +18,7 @@ export function ProjectSection({
   icon,
 }: ProjectSectionProps) {
   return (
-    <section className="pt-8 pb-20 px-8 sm:px-12 lg:px-16 relative bg-gradient-grey-teal min-h-screen flex items-center justify-center">
+    <section className="pt-8 pb-20 px-0 sm:px-0 lg:px-0 relative bg-gradient-grey-teal min-h-screen flex items-center justify-center">
       {/* Background container to prevent content bleeding through */}
       <div className="absolute inset-0 bg-gradient-grey-teal"></div>
       <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-muted to-transparent pointer-events-none"></div>
@@ -26,7 +26,10 @@ export function ProjectSection({
       {/* Gradient overlay at the top - smooth transition */}
       <div className="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-muted to-transparent pointer-events-none"></div>
 
-      <div className="max-w-7xl mx-auto w-full relative z-10">
+      <div
+        className="max-w-7xl mx-auto w-full relative z-10"
+        style={{ paddingLeft: '16px', paddingRight: '16px' }}
+      >
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
