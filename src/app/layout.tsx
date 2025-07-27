@@ -14,12 +14,38 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Zaid - Software Developer Portfolio',
+  title: 'Zaid Naeem – Full Stack Developer Portfolio',
   description:
-    'Software Developer | Problem Solver | Tech Explorer. Full-stack developer specializing in React, Rails, and modern web technologies.',
-  keywords: ['software developer', 'full-stack', 'react', 'rails', 'portfolio'],
-  authors: [{ name: 'Zaid' }],
+    'Explore my projects and tech stack in web and mobile development. Built with React, React Native, Next.js, and more.',
+  keywords: [
+    'Zaid Naeem',
+    'full stack developer',
+    'portfolio',
+    'react',
+    'react native',
+    'next.js',
+    'web development',
+    'mobile development',
+  ],
+  authors: [{ name: 'Zaid Naeem' }],
   viewport: 'width=device-width, initial-scale=1',
+  openGraph: {
+    title: 'Zaid Naeem – Full Stack Developer Portfolio',
+    description:
+      'Explore my projects and tech stack in web and mobile development. Built with React, React Native, Next.js, and more.',
+    siteName: 'Zaid Naeem Portfolio',
+    url: 'https://zaid-naeem-portfolio.vercel.app',
+    images: [
+      {
+        url: '/og-banner.png',
+        width: 1200,
+        height: 630,
+        alt: 'Zaid Naeem Portfolio Banner',
+      },
+    ],
+    type: 'website',
+  },
+  metadataBase: new URL('https://zaid-naeem-portfolio.vercel.app'),
 };
 
 export default function RootLayout({
