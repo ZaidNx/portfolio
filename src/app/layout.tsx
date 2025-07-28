@@ -70,6 +70,12 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  other: {
+    'og:image:width': '1200',
+    'og:image:height': '630',
+    'og:image:type': 'image/png',
+    'og:image:alt': 'Zaid Naeem Portfolio Banner',
+  },
 };
 
 export default function RootLayout({
