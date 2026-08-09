@@ -1,208 +1,136 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
+
+const skillGroups = {
+  Frontend: [
+    'React',
+    'TypeScript',
+    'JavaScript (ES6+)',
+    'Redux Toolkit',
+    'Redux Thunk',
+    'React Query',
+    'HTML',
+    'CSS / SCSS',
+    'Material UI',
+    'Tailwind CSS',
+    'tss-react',
+    'esbuild',
+  ],
+  Mobile: ['React Native', 'SQLite', 'Offline-first workflows'],
+  'Backend / APIs': [
+    'Ruby on Rails',
+    'REST APIs',
+    'Controllers',
+    'ActiveModelSerializers',
+    'Presenters',
+    'MySQL / SQL',
+    'CanCanCan',
+    'DelayedJob',
+  ],
+  'Cloud / Delivery': ['AWS S3', 'CloudFront', 'CodeDeploy', 'GitHub Actions'],
+  Tools: ['Git', 'GitHub', 'Cursor', 'Claude', 'Postman', 'Redmine'],
+};
 
 export function AboutSection() {
-  const techStack = {
-    frontend: [
-      'React',
-      'Redux Toolkit',
-      'React Native',
-      'TypeScript',
-      'TailwindCSS',
-    ],
-    backend: ['Ruby on Rails', 'Node.js', 'Express.js'],
-    mobile: ['React Native (Android + iOS, with Offline capabilities)'],
-    database: ['PostgreSQL', 'MySQL', 'MongoDB'],
-    devops: ['GitHub Actions', 'Render', 'Vercel'],
-    tools: ['Jest', 'RSpec', 'Postman', 'ESLint', 'Figma'],
-  };
-
-  const highlights = [
-    '🧠 Architected a modular offline-sync engine for React Native that handled CRUD queuing, retries, race conditions, and eventual consistency with backend',
-    '🔐 Implemented JWT-secured login flows and role-based access control (RBAC) for web and mobile',
-    '📊 Built real-time dashboards and insight widgets powered by backend analytics and cron jobs',
-    '📥 Integrated email notifications and webhooks for appointment confirmations and reminders',
-    '🧾 Developed PDF generation & download workflows for invoices and receipts',
-    '📦 Set up dynamic form builders and reusable component libraries in React',
-    '🔍 Delivered smart filtering and search UIs using debounce, tag selectors, and client-server sync',
-    '🚦 Built custom rate limiters and validation logic to ensure safe backend job processing',
-    '🧪 Covered all major business logic with unit, integration, and feature specs in RSpec & Jest',
-    '🌐 Created a public appointment booking portal with availability-based time slot filtering',
-    '🤖 Experimented with custom chatbot UI, fetching dynamic data from business settings',
-  ];
-
   return (
-    <section className="min-h-screen bg-gradient-purple-blue relative flex items-center justify-center px-0 sm:px-0 lg:px-0 py-20">
-      {/* Background container to prevent content bleeding through */}
-      <div className="absolute inset-0 bg-gradient-purple-blue"></div>
+    <section id="about" className="section-shell bg-gradient-purple-blue">
+      <div className="section-overlay bg-gradient-purple-blue" />
+      <div className="section-fade section-fade-bottom" />
 
-      {/* Gradient overlay at the top - animated gradient to purple-blue */}
-      <div className="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-dark-purple to-transparent"></div>
-
-      {/* Gradient overlay at the bottom - black to grey */}
-      <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-muted to-transparent"></div>
-
-      <div
-        className="max-w-7xl mx-auto w-full relative z-10"
-        style={{ paddingLeft: '16px', paddingRight: '16px' }}
-      >
-        {/* Row 1: Profile Picture (left) + About Text (right) */}
-        <div className="flex flex-col md:flex-row gap-10 md:gap-16 items-start w-full">
-          {/* Profile Picture */}
-          <div className="flex-shrink-0 flex justify-center items-start w-full md:w-auto">
-            <div className="rounded-[3rem] border-6 border-primary shadow-xl w-44 h-56 sm:w-52 sm:h-64 lg:w-60 lg:h-72 overflow-hidden bg-muted">
-              <img
-                src="/Zaid-Profile-Picture.JPG"
-                alt="Zaid Naeem Profile"
-                className="w-full h-full object-cover"
-                style={{
-                  objectPosition: 'center 50%',
-                  transform: 'scale(1.5) translateX(6px)',
-                }}
-              />
-            </div>
-          </div>
-          {/* About Text */}
-          <div className="flex-1 space-y-6 w-full">
-            <h1 className="text-4xl sm:text-5xl font-bold glow-text leading-tight">
-              Zaid Naeem
-            </h1>
-            <p className="text-xl sm:text-2xl text-primary font-semibold">
-              Full-Stack Software Engineer
-            </p>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Full-Stack Engineer with{' '}
-              <span className="text-primary font-semibold">3+ years</span> of
-              experience building high-impact{' '}
-              <span className="text-primary font-semibold">SaaS products</span>{' '}
-              across{' '}
-              <span className="text-primary font-semibold">web and mobile</span>
-              . I specialize in{' '}
-              <span className="text-primary font-semibold">MERN</span>,{' '}
-              <span className="text-primary font-semibold">React</span>,{' '}
-              <span className="text-primary font-semibold">MongoDB</span>,{' '}
-              <span className="text-primary font-semibold">Express.js</span>,{' '}
-              <span className="text-primary font-semibold">Node.js</span>,{' '}
-              <span className="text-primary font-semibold">React Native</span>,{' '}
-              <span className="text-primary font-semibold">Ruby on Rails</span>,
-              and <span className="text-primary font-semibold">TypeScript</span>
-              —developing fast, intuitive, and scalable user experiences. My
-              work spans{' '}
-              <span className="text-primary font-semibold">
-                enterprise platforms
-              </span>{' '}
-              used by{' '}
-              <span className="text-primary font-semibold">Fortune 500s</span>,
-              as well as custom client solutions. Whether you&apos;re a{' '}
-              <span className="text-primary font-semibold">startup</span> or a{' '}
-              <span className="text-primary font-semibold">
-                scaling business
-              </span>
-              , I bring{' '}
-              <span className="text-primary font-semibold">clean code</span>,{' '}
-              <span className="text-primary font-semibold">speed</span>, and{' '}
-              <span className="text-primary font-semibold">reliability</span> to
-              the table.
-            </p>
-            {/* Personal Focus */}
-            <div
-              className="bg-muted p-8 rounded-lg border border-border w-full mt-8"
-              style={{ marginTop: '2rem !important' }}
-            >
-              <h3 className="text-lg font-bold text-foreground mb-4 flex items-center gap-2">
-                <span className="text-primary">🌟</span>
-                Personal Focus
-              </h3>
-              <p className="text-muted-foreground">
-                Currently focused on performance-driven, cross-platform app
-                development and building intuitive, AI-powered user experiences.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Row 2: Tech Stack (full width, below row 1) */}
+      <div className="section-content">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 48 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.5 }}
-          viewport={{ once: true }}
-          className="w-full"
-          style={{ marginTop: '32px !important' }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          viewport={{ once: true, amount: 0.2 }}
+          className="about-grid"
         >
-          <div className="space-y-6">
-            <h3 className="text-3xl font-bold text-foreground flex items-center justify-center gap-3">
-              <span className="text-primary">🧑‍💻</span>
-              Tech Stack
-            </h3>
-            <div className="space-y-8">
-              {Object.entries(techStack).map(([category, techs]) => (
-                <div key={category} className="space-y-4">
-                  <h4 className="text-sm font-semibold text-primary uppercase tracking-wide">
-                    {category}
-                  </h4>
-                  <div className="flex flex-wrap gap-3 justify-start">
-                    {techs.map((tech, idx) => (
-                      <span
-                        key={idx}
-                        className="px-4 py-2 bg-muted text-sm font-mono rounded border border-border text-muted-foreground hover:text-primary hover:border-primary transition-colors"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ))}
+          <div className="profile-frame">
+            <Image
+              src="/Zaid-Profile-Picture.JPG"
+              alt="Zaid Naeem"
+              fill
+              sizes="(max-width: 768px) 176px, 224px"
+              className="profile-image"
+            />
+          </div>
+
+          <div>
+            <p className="eyebrow">About</p>
+            <h2 className="section-title text-left">Hands-on frontend ownership</h2>
+            <p className="about-lead">
+              I&apos;m a Senior Software Engineer with 4+ years of experience
+              building React, TypeScript and React Native applications for the
+              EZO enterprise SaaS suite.
+            </p>
+            <p className="body-copy">
+              My work spans large-scale frontend modernization, complex
+              Redux-driven workflows, offline-first mobile features, REST API
+              integration and frontend performance. I work primarily on
+              frontend systems while regularly collaborating across Ruby on
+              Rails APIs and backend data flows.
+            </p>
+            <p className="body-copy">
+              My architecture and ownership experience grew out of years of
+              implementation, debugging and code review. I still spend most of
+              my time building and improving production software.
+            </p>
+
+            <div className="about-notes">
+              <div className="note-card">
+                <span className="note-label">Engineering initiative</span>
+                <p>
+                  Proposed and implemented TypeScript and ESLint enforcement in
+                  the React Native repository so unresolved type and lint issues
+                  could not be pushed.
+                </p>
+              </div>
+              <div className="note-card">
+                <span className="note-label">AI-assisted development</span>
+                <p>
+                  I use Cursor and Claude for implementation, debugging and
+                  refactoring with a review-first workflow, while retaining full
+                  ownership of the code I ship.
+                </p>
+              </div>
             </div>
           </div>
         </motion.div>
 
-        {/* Row 3: Major Highlights (unchanged) */}
-        <div className="mt-20 w-full">
-          <div className="text-center mb-12" style={{ paddingTop: '32px' }}>
-            <h3 className="text-3xl font-bold text-foreground flex items-center justify-center gap-3">
-              <span className="text-primary">🛠️</span>
-              Major Highlights
-            </h3>
+        <motion.div
+          initial={{ opacity: 0, y: 44 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.78, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
+          viewport={{ once: true, amount: 0.16 }}
+          className="skills-panel"
+        >
+          <div className="section-heading-row">
+            <div>
+              <p className="eyebrow">Core skills</p>
+              <h3 className="subsection-title">Tools used in production work</h3>
+            </div>
+            <p className="section-aside">
+              Frontend-focused, with practical Rails and API collaboration.
+            </p>
           </div>
 
-          {/* Two-column layout for highlights */}
-          <div
-            className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto"
-            style={{ paddingTop: '24px' }}
-          >
-            {/* Left Column */}
-            <div className="space-y-4">
-              {highlights
-                .slice(0, Math.ceil(highlights.length / 2))
-                .map((highlight, idx) => (
-                  <div
-                    key={idx}
-                    className="text-muted-foreground flex items-start gap-4"
-                  >
-                    <span className="text-primary mt-1 text-sm">•</span>
-                    <span className="leading-relaxed">{highlight}</span>
-                  </div>
-                ))}
-            </div>
-
-            {/* Right Column */}
-            <div className="space-y-4">
-              {highlights
-                .slice(Math.ceil(highlights.length / 2))
-                .map((highlight, idx) => (
-                  <div
-                    key={idx + Math.ceil(highlights.length / 2)}
-                    className="text-muted-foreground flex items-start gap-4"
-                  >
-                    <span className="text-primary mt-1 text-sm">•</span>
-                    <span className="leading-relaxed">{highlight}</span>
-                  </div>
-                ))}
-            </div>
+          <div className="skills-grid">
+            {Object.entries(skillGroups).map(([group, skills]) => (
+              <div key={group} className="skill-group">
+                <h4>{group}</h4>
+                <div className="tag-list">
+                  {skills.map((skill) => (
+                    <span key={skill} className="tech-tag">
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

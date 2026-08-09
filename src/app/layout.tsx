@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import VisitNotifier from '../components/VisitNotifier';
@@ -14,37 +14,37 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Zaid Naeem – Full Stack Developer Portfolio',
+  title: 'Zaid Naeem | Senior Frontend Engineer — React, TypeScript, React Native',
   description:
-    'Explore my projects and tech stack in web and mobile development. Built with React, React Native, Next.js, and more.',
+    'Senior Frontend Engineer with 4+ years of experience building React, TypeScript and React Native applications across enterprise SaaS products, with expertise in state management, frontend modernization, API integration, offline workflows and performance.',
   keywords: [
     'Zaid Naeem',
-    'full stack developer',
-    'portfolio',
-    'react',
-    'react native',
-    'next.js',
-    'web development',
-    'mobile development',
+    'Senior Frontend Engineer',
+    'Senior Software Engineer',
+    'React',
+    'TypeScript',
+    'React Native',
+    'Redux',
+    'Enterprise SaaS',
+    'Lahore Pakistan',
   ],
   authors: [{ name: 'Zaid Naeem' }],
-  viewport: 'width=device-width, initial-scale=1',
   metadataBase: new URL('https://zaid-naeem-portfolio.vercel.app'),
   alternates: {
     canonical: 'https://zaid-naeem-portfolio.vercel.app',
   },
   openGraph: {
-    title: 'Zaid Naeem – Full Stack Developer Portfolio',
+    title: 'Zaid Naeem | Senior Frontend Engineer',
     description:
-      'Explore my projects and tech stack in web and mobile development. Built with React, React Native, Next.js, and more.',
+      'React, TypeScript and React Native engineering across production enterprise SaaS products.',
     siteName: 'Zaid Naeem Portfolio',
     url: 'https://zaid-naeem-portfolio.vercel.app',
     images: [
       {
-        url: '/og-banner.png',
+        url: '/og.png',
         width: 1200,
         height: 630,
-        alt: 'Zaid Naeem Portfolio Banner',
+        alt: 'Zaid Naeem — Senior Frontend Engineer',
         type: 'image/png',
       },
     ],
@@ -53,10 +53,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Zaid Naeem – Full Stack Developer Portfolio',
+    title: 'Zaid Naeem | Senior Frontend Engineer',
     description:
-      'Explore my projects and tech stack in web and mobile development. Built with React, React Native, Next.js, and more.',
-    images: ['/og-banner.png'],
+      'React, TypeScript and React Native engineering across production enterprise SaaS products.',
+    images: ['/og.png'],
     creator: '@ZaidNx',
   },
   robots: {
@@ -74,8 +74,13 @@ export const metadata: Metadata = {
     'og:image:width': '1200',
     'og:image:height': '630',
     'og:image:type': 'image/png',
-    'og:image:alt': 'Zaid Naeem Portfolio Banner',
+    'og:image:alt': 'Zaid Naeem — Senior Frontend Engineer',
   },
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
 };
 
 export default function RootLayout({

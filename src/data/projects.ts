@@ -5,277 +5,228 @@ export interface Project {
   features: string[];
   techStack: string[];
   liveUrl?: string;
-  demoUrl?: string;
   githubUrl?: string;
   iosUrl?: string;
   androidUrl?: string;
-  image?: string;
-  category: 'featured' | 'web' | 'mobile';
+  featureLabel?: string;
+  stackLabel?: string;
+  eyebrow?: string;
+  category: 'professional' | 'product' | 'mobile' | 'public';
 }
 
-export const projects: Project[] = [
+export const professionalWork: Project[] = [
   {
-    id: 'stockpioneer',
-    title: 'StockPioneer – MERN Inventory Manager',
+    id: 'listing-filter-platform',
+    title: 'Multi-product listing filter platform',
     description:
-      'A full-stack, cloud-based inventory tracking system designed for retailers and small businesses. StockPioneer helps manage stock movement, suppliers, and real-time analytics across multiple business locations.',
+      'Owned and extended a shared filtering platform used across four enterprise SaaS products and their React Native clients.',
     features: [
-      'Full inventory lifecycle: check-in/out, return, damage, sale',
-      'Multi-location tracking & linked supplier profiles',
-      'Visual dashboards with low-stock alerts & trends',
-      'Action logs with real-time activity tracking',
-      'Add/edit/delete items with quantity, category & pricing',
-      'JWT-auth with protected routes and role-based access',
-      'Responsive UI with dark mode support',
-      'Built-in data validations and toast notifications',
+      'Built on an existing YAML-driven structure with reusable React components, Redux state and Rails filter services',
+      'Solved persisted-filter restoration by rebuilding Redux state from URL parameters after a hard browser refresh',
+      'Became the main technical reference over time and ran a knowledge-sharing session for the wider team',
     ],
-    techStack: [
-      'MongoDB',
-      'Express.js',
-      'React.js',
-      'Node.js',
-      'TailwindCSS',
-      'JWT',
-      'Mongoose',
-      'Toastify',
-    ],
-    liveUrl: 'https://stockpioneer-backend.onrender.com',
-    demoUrl: 'https://www.youtube.com/watch?v=klnyU4ILK8Y',
-    category: 'featured',
+    techStack: ['React', 'TypeScript', 'Redux', 'Redux Thunk', 'Ruby on Rails', 'YAML'],
+    featureLabel: 'Ownership and contribution',
+    eyebrow: 'Platform ownership',
+    category: 'professional',
   },
   {
-    id: 'intelliserve-crm',
-    title: 'IntelliServe CRM – Service Business Manager',
+    id: 'legacy-react-modernization',
+    title: 'Legacy-to-React modernization',
     description:
-      'A modern, full-stack CRM solution tailored for small, service-based businesses. IntelliServe simplifies daily operations with real-time scheduling, customer engagement, and revenue analytics—all from an intuitive, mobile-responsive interface. Designed for studios, salons, and consultancies, it streamlines client management and boosts operational efficiency.',
+      'Implemented React modernization across mature SaaS modules while preserving permissions, behavior and feature parity.',
     features: [
-      '📅 Appointment scheduling with time-slot management',
-      '👥 Customer tracking with insights on growth & retention',
-      '🛠️ Manage services offered with dynamic pricing support',
-      '📈 Business performance dashboards: revenue, satisfaction, booking rate',
-      '📊 Analytics widgets with visual insights & KPIs',
-      '🔐 Secure login and user roles (Admin, Manager, etc.)',
-      '🖥️ Responsive UI with dark mode support',
-      '📨 Email reminder integrations for appointments (extendable)',
+      'Implemented substantial migration work across Members, Provisioning and Documents, and inherited and finalized the in-progress Vendors migration',
+      'Worked with two other engineers on the large, permission-heavy Members migration',
+      'Preserved existing permissions and business behavior while replacing repeated server-rendered page loads with faster React interactions',
     ],
-    techStack: [
-      'React',
-      'TypeScript',
-      'TailwindCSS',
-      'Node.js',
-      'Express.js',
-      'MongoDB',
-      'Vite',
-      'Toastify',
-      'Day.js',
-      'Chart.js',
-    ],
-    liveUrl: 'https://intelliservecrm.onrender.com/',
-    demoUrl: 'https://www.youtube.com/watch?v=nsMJt55dDmM',
-    category: 'featured',
+    techStack: ['React', 'TypeScript', 'Redux Toolkit', 'React Query', 'Ruby on Rails', 'REST APIs'],
+    featureLabel: 'Selected contribution',
+    eyebrow: 'Frontend modernization',
+    category: 'professional',
   },
   {
-    id: 'ezofficeinventory-web',
-    title: 'EZOfficeInventory (Web)',
-    description: 'Asset Management platform for global enterprises.',
+    id: 'offline-work-orders',
+    title: 'Offline-first mobile work orders',
+    description:
+      'Designed and implemented an offline-first React Native and Rails workflow for field and maintenance teams working with unreliable connectivity.',
     features: [
-      'Asset tracking, inventory flows',
-      'Maintenance scheduling',
-      'Reporting and dashboards',
+      'Added connectivity detection, background caching, SQLite storage and offline-aware UX',
+      'Queued offline writes and synchronized them in batches after reconnecting',
+      'Used server-side background processing to protect stability during reconnect bursts',
     ],
-    techStack: [
-      'React',
-      'Redux Toolkit',
-      'TypeScript',
-      'Ruby on Rails',
-      'MySQL',
-      'AWS S3',
-      'Elasticsearch',
-      'JWT',
-      'RSpec',
+    techStack: ['React Native', 'TypeScript', 'SQLite', 'Redux Thunk', 'Ruby on Rails', 'DelayedJob'],
+    featureLabel: 'Architecture and delivery',
+    eyebrow: 'Mobile architecture',
+    category: 'professional',
+  },
+  {
+    id: 'dispatch-center',
+    title: 'Dispatch Center',
+    description:
+      'Built Dispatch Center in React, a unified request-management workspace combining multiple operational workflows with a customized scheduling/calendar experience.',
+    features: [
+      'Supported multiple request types and asset reservation and checkout timelines',
+      'Worked closely with product, UX and QA on the customized scheduling experience',
+      'Guided a junior engineer on backend data shapes and React debugging',
     ],
-    liveUrl: 'https://www.ezofficeinventory.com',
-    category: 'web',
+    techStack: ['React', 'TypeScript', 'Redux', 'REST APIs', 'Ruby on Rails'],
+    featureLabel: 'Selected contribution',
+    eyebrow: 'Product engineering',
+    category: 'professional',
+  },
+  {
+    id: 'cmdb-integration',
+    title: 'CMDB cross-product integration',
+    description:
+      'Integrated an existing React CMDB module into a separate PHP/GLPI ITSM application despite having no prior professional PHP experience.',
+    features: [
+      'Created a dedicated esbuild entry point and deployment-time bundle distribution through AWS S3',
+      'Resolved same-origin API proxying, route allowlisting, authentication, session and CSS-collision issues',
+      'Documented the production-safe integration for other developers',
+    ],
+    techStack: ['React', 'esbuild', 'PHP / GLPI', 'REST APIs', 'AWS S3'],
+    featureLabel: 'Integration work',
+    eyebrow: 'Cross-product integration',
+    category: 'professional',
+  },
+  {
+    id: 'frontend-delivery',
+    title: 'Frontend delivery performance',
+    description:
+      'Completed the CloudFront/S3 rollout for frontend asset delivery after taking over the in-progress initiative and resolving remaining QA issues.',
+    features: [
+      'Completed rollout work across validated staging and production environments',
+      'Helped reduce measured page-load time by roughly half across validated staging and production measurements',
+    ],
+    techStack: ['AWS CloudFront', 'AWS S3', 'React', 'CodeDeploy', 'Performance debugging'],
+    featureLabel: 'Delivery and outcome',
+    eyebrow: 'Performance engineering',
+    category: 'professional',
+  },
+];
+
+export const productProjects: Project[] = [
+  {
+    id: 'ezo-web',
+    title: 'EZO / EZOfficeInventory',
+    description:
+      'Asset and equipment-management platform. Contributions span React modernization, shared filters, asset workflows and React Native field operations.',
+    features: [],
+    techStack: [],
+    liveUrl: 'https://ezo.io/ezofficeinventory/',
+    featureLabel: 'Selected contributions',
+    category: 'product',
   },
   {
     id: 'assetsonar-web',
-    title: 'AssetSonar (Web)',
-    description: 'IT asset management with licensing insights.',
-    features: [
-      'License tracking',
-      'Hardware categorization',
-      'Performance tuning',
-    ],
-    techStack: [
-      'React',
-      'REST API',
-      'Styled Components',
-      'Elasticsearch',
-      'Docker',
-      'Sidekiq',
-      'OpenAPI',
-      'RuboCop',
-    ],
-    liveUrl: 'https://www.assetsonar.com',
-    category: 'web',
+    title: 'AssetSonar',
+    description:
+      'IT asset-management platform. Contributions include React/React Native workflows, shared filtering and the CMDB-to-ITSM integration.',
+    features: [],
+    techStack: [],
+    liveUrl: 'https://ezo.io/assetsonar/',
+    featureLabel: 'Selected contributions',
+    category: 'product',
   },
   {
     id: 'ezocmms-web',
-    title: 'EZO CMMS (Web)',
-    description: 'Maintenance and work order management.',
-    features: [
-      'Preventive maintenance scheduling',
-      'Role-based views',
-      'Work order generation',
-    ],
-    techStack: [
-      'React',
-      'TypeScript',
-      'Ransack',
-      'Redis',
-      'AWS SES',
-      'Delayed Job',
-      'Stripe',
-      'FactoryBot',
-    ],
-    liveUrl: 'https://www.ezocmms.com',
-    category: 'web',
+    title: 'EZO CMMS',
+    description:
+      'Maintenance and work-order platform. Contributions include mobile work-order experiences, planner/scheduling work and offline-first field workflows.',
+    features: [],
+    techStack: [],
+    liveUrl: 'https://ezo.io/ezo-cmms/',
+    featureLabel: 'Selected contributions',
+    category: 'product',
   },
   {
     id: 'ezrentout-web',
-    title: 'EZRentOut (Web)',
-    description: 'Rental management software for equipment.',
-    features: [
-      'Rental lifecycle flows',
-      'Role-based access',
-      'Invoice and listing management',
-    ],
-    techStack: [
-      'React',
-      'GraphQL',
-      'MUI',
-      'Redis',
-      'AWS CloudWatch',
-      'Capistrano',
-      'Devise JWT',
-      'Capybara',
-    ],
-    liveUrl: 'https://www.ezrentout.com',
-    category: 'web',
+    title: 'EZRentOut',
+    description:
+      'Equipment-rental platform. Contributions include orders and reservations, shared filters, mobile workflows and Dispatch Center.',
+    features: [],
+    techStack: [],
+    liveUrl: 'https://ezo.io/ezrentout/',
+    featureLabel: 'Selected contributions',
+    category: 'product',
   },
+];
+
+export const mobileProjects: Project[] = [
   {
-    id: 'ezofficeinventory-mobile',
-    title: 'EZOfficeInventory (Mobile)',
-    description: 'Track assets on the go with barcode scanning.',
-    features: ['Offline check-in/out', 'QR/barcode scans', 'Web-app sync'],
-    techStack: [
-      'React Native',
-      'Expo',
-      'TypeScript',
-      'Redux Toolkit',
-      'React Navigation',
-      'React Native Elements',
-      'SQLite',
-      'Axios',
-      'BLE Manager',
-      'Firebase Analytics',
-    ],
+    id: 'ezo-mobile',
+    title: 'EZO Mobile',
+    description:
+      'For operations teams managing equipment in the field: scan QR and barcodes, check items in and out, run location and custody audits, and manage reservations and carts on the go.',
+    features: [],
+    techStack: [],
     iosUrl: 'https://apps.apple.com/us/app/ezo/id516935177',
-    androidUrl:
-      'https://play.google.com/store/apps/details?id=com.ezofficeinventory.mobile2',
+    androidUrl: 'https://play.google.com/store/apps/details?id=com.ezofficeinventory.mobile2',
+    featureLabel: 'Selected contributions',
     category: 'mobile',
   },
   {
     id: 'assetsonar-mobile',
-    title: 'AssetSonar (Mobile)',
-    description: 'Mobile tool for IT asset management.',
-    features: [
-      'License scanning',
-      'Memoized performance',
-      'Offline inventory logs',
-    ],
-    techStack: [
-      'React Native',
-      'React',
-      'React Redux',
-      'React Native Reanimated',
-      'TypeORM',
-      'AsyncStorage',
-      'NetInfo',
-      'Expo Local Authentication',
-      'Stripe',
-      'React Native Maps',
-    ],
+    title: 'AssetSonar Mobile',
+    description:
+      'For IT teams managing hardware and software lifecycles: scan and update assets, verify custody, run audits, and keep accurate ITAM records from the field.',
+    features: [],
+    techStack: [],
     iosUrl: 'https://apps.apple.com/us/app/ezo-assetsonar/id1477590025',
-    androidUrl:
-      'https://play.google.com/store/apps/details?id=com.assetsonar.mobile',
+    androidUrl: 'https://play.google.com/store/apps/details?id=com.assetsonar.mobile',
+    featureLabel: 'Selected contributions',
     category: 'mobile',
   },
   {
     id: 'ezocmms-mobile',
-    title: 'EZO CMMS (Mobile)',
-    description: 'Manage maintenance directly from the field.',
-    features: [
-      'Push notifications',
-      'Maintenance task tracking',
-      'Work order views',
-    ],
-    techStack: [
-      'React Native',
-      'Expo',
-      'Redux Toolkit',
-      'React Native Gesture Handler',
-      'Expo Secure Store',
-      'React Native Offline',
-      'Crypto-JS',
-      'Square In-App Payments',
-      'RFID SDK',
-      'Expo Location',
-    ],
+    title: 'EZO CMMS Mobile',
+    description:
+      'For maintenance technicians and field teams: manage assigned work orders and maintenance tasks, record work logs offline, and synchronize updates when connectivity returns.',
+    features: [],
+    techStack: [],
     iosUrl: 'https://apps.apple.com/jp/app/ezo-cmms/id6448132457?l=en-US',
-    androidUrl:
-      'https://play.google.com/store/apps/details?id=com.ezocmms.mobile',
+    androidUrl: 'https://play.google.com/store/apps/details?id=com.ezocmms.mobile',
+    featureLabel: 'Selected contributions',
     category: 'mobile',
   },
   {
     id: 'ezrentout-mobile',
-    title: 'EZRentOut (Mobile)',
-    description: 'Rental operations and inventory access.',
-    features: [
-      'Booking/return features',
-      'Item views with filters',
-      'Offline-friendly UI',
-    ],
-    techStack: [
-      'React Native',
-      'TypeScript',
-      'React Navigation',
-      'React Native Elements',
-      'React Native Camera',
-      'Image Picker',
-      'Firebase Crashlytics',
-      'i18n-js',
-      'Moment.js',
-    ],
+    title: 'EZRentOut Mobile',
+    description:
+      'For equipment-rental teams in the office or field: rent out and return orders, scan equipment, check availability, and manage customers, vendors and locations on the go.',
+    features: [],
+    techStack: [],
     iosUrl: 'https://apps.apple.com/us/app/ezrentout/id907018745',
-    androidUrl:
-      'https://play.google.com/store/apps/details?id=com.ezrentout.mobile',
+    androidUrl: 'https://play.google.com/store/apps/details?id=com.ezrentout.mobile',
+    featureLabel: 'Selected contributions',
     category: 'mobile',
   },
 ];
 
-export function getFeaturedProject(): Project | null {
-  return projects.find((project) => project.category === 'featured') || null;
-}
-
-export function getFeaturedProjects(): Project[] {
-  return projects.filter((project) => project.category === 'featured');
-}
-
-export function getWebProjects(): Project[] {
-  return projects.filter((project) => project.category === 'web');
-}
-
-export function getMobileProjects(): Project[] {
-  return projects.filter((project) => project.category === 'mobile');
-}
+export const publicProjects: Project[] = [
+  {
+    id: 'intelliserve-crm',
+    title: 'IntelliServe CRM',
+    description:
+      'An AI-assisted rapid prototype exploring service-business CRM workflows through appointments, customers, dashboards and analytics.',
+    features: ['Appointment and customer workflows', 'Responsive dashboards and analytics', 'Service-business management concepts'],
+    techStack: ['React', 'TypeScript', 'Tailwind CSS', 'Node / Express', 'MongoDB'],
+    liveUrl: 'https://intelliservecrm.onrender.com/',
+    githubUrl: 'https://github.com/ZaidNx/IntelliServeCRM',
+    featureLabel: 'Prototype scope',
+    category: 'public',
+  },
+  {
+    id: 'stockpioneer',
+    title: 'StockPioneer',
+    description:
+      'An AI-assisted inventory-management prototype covering stock, suppliers, locations and core inventory workflows.',
+    features: ['Stock and item management', 'Supplier and location records', 'Inventory activity and dashboard views'],
+    techStack: ['React', 'Tailwind CSS', 'Node / Express', 'MongoDB'],
+    liveUrl: 'https://stockpioneer-backend.onrender.com/',
+    githubUrl: 'https://github.com/ZaidNx/StockPioneer',
+    featureLabel: 'Prototype scope',
+    category: 'public',
+  },
+];

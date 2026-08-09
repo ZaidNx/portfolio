@@ -1,43 +1,41 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useRef, useState } from 'react';
-import { Github, Linkedin, Mail } from 'lucide-react';
-import Image from 'next/image';
-import { ParallaxText, ScrollProgress } from '../components/ScrollSection';
-import { AboutSection } from '../components/AboutSection';
-import { FeaturedProject } from '../components/FeaturedProject';
-import { ProjectSection } from '../components/ProjectSection';
 import {
-  getFeaturedProjects,
-  getWebProjects,
-  getMobileProjects,
-  Project,
+  ArrowDown,
+  ArrowUpRight,
+  Github,
+  Linkedin,
+  Mail,
+  MapPin,
+} from 'lucide-react';
+import Image from 'next/image';
+import { FormEvent, useState } from 'react';
+import { AboutSection } from '../components/AboutSection';
+import { EducationSection, ExperienceSection } from '../components/CareerSections';
+import { ProjectSection } from '../components/ProjectSection';
+import { ScrollProgress } from '../components/ScrollSection';
+import {
+  mobileProjects,
+  professionalWork,
+  productProjects,
+  publicProjects,
 } from '../data/projects';
 
+const navItems = [
+  ['About', '#about'],
+  ['Experience', '#experience'],
+  ['Work', '#work'],
+  ['Contact', '#contact'],
+];
+
 export default function Home() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  // Removed unused scrollYProgress
-
-  const featuredProjects = getFeaturedProjects();
-  const webProjects = getWebProjects();
-  const mobileProjects = getMobileProjects();
-
-  // Contact form state
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<
-    'idle' | 'success' | 'error'
-  >('idle');
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
-  // Handle form submission with Nodemailer API
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     if (isSubmitting) return;
 
     setIsSubmitting(true);
@@ -46,442 +44,261 @@ export default function Home() {
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
 
-      const result = await response.json();
+      if (!response.ok) throw new Error('Message could not be sent');
 
-      if (response.ok) {
-        setSubmitStatus('success');
-        setFormData({ name: '', email: '', message: '' });
-        // Reset status after 3 seconds
-        setTimeout(() => setSubmitStatus('idle'), 3000);
-      } else {
-        throw new Error(result.error || 'Failed to send message');
-      }
-    } catch (error) {
-      console.error('Email send failed:', error);
+      setFormData({ name: '', email: '', message: '' });
+      setSubmitStatus('success');
+    } catch {
       setSubmitStatus('error');
-      // Reset status after 3 seconds
-      setTimeout(() => setSubmitStatus('idle'), 3000);
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  // Handle input changes
-  const handleInputChange = (field: string, value: string) => {
-    setFormData((prev) => ({
-      ...prev,
-      [field]: value,
-    }));
-  };
-
   return (
-    <div
-      ref={containerRef}
-      className="min-h-screen bg-background text-foreground relative"
-    >
+    <main className="site-root">
       <ScrollProgress />
 
-      {/* Hero Section - Centered Image with Text on Sides */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-8 sm:px-12 lg:px-16 bg-animated-gradient">
-        {/* Top gradient overlay for smooth transition */}
-        <div className="absolute top-0 left-0 right-0 h-64 bg-gradient-to-b from-[#0a0515] to-transparent pointer-events-none"></div>
-        {/* Background gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-background/20 via-background/10 to-primary/5"></div>
-
-        {/* Main content container - centered */}
-        {/* Background Image */}
-        <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
+      <section className="hero bg-animated-gradient">
+        <div className="hero-background" aria-hidden="true">
           <Image
             src="/zaid-hero.png"
-            alt="Zaid Hero Background"
+            alt=""
             fill
-            className="object-contain opacity-10"
             priority
+            sizes="100vw"
+            className="hero-background-image"
           />
-          {/* Light overlay for better text readability */}
-          <div className="absolute inset-0 bg-background/10"></div>
         </div>
+        <div className="hero-vignette" />
 
-        {/* Content on top of background image */}
-        <div className="relative z-10 flex flex-col lg:flex-row items-center justify-center w-full max-w-7xl mx-auto">
-          {/* Left text - "Hey, there" */}
+        <nav className="site-nav" aria-label="Primary navigation">
+          <a href="#top" className="nav-name" aria-label="Zaid Naeem, home">
+            ZN<span>.</span>
+          </a>
+          <div className="nav-links">
+            {navItems.map(([label, href]) => (
+              <a key={href} href={href}>
+                {label}
+              </a>
+            ))}
+          </div>
+        </nav>
+
+        <div id="top" className="hero-content">
           <motion.div
-            initial={{ opacity: 0, x: -100 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="flex-1 flex items-center justify-end lg:pr-8 mb-8 lg:mb-0"
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
           >
-            <h2
-              className="text-4xl md:text-6xl lg:text-7xl font-serif italic text-foreground text-center lg:text-right drop-shadow-lg"
-              style={{ lineHeight: 1.1 }}
-            >
-              Hey, there
-            </h2>
-          </motion.div>
+            <div className="availability-line">
+              <span className="status-dot" />
+              Lahore, Pakistan
+            </div>
+            <p className="hero-kicker">Senior Frontend Engineer</p>
+            <h1>ZAID NAEEM</h1>
+            <p className="hero-stack">React · TypeScript · React Native · Enterprise SaaS</p>
+            <p className="hero-summary">
+              Building production web and mobile experiences across complex
+              enterprise SaaS products, with a focus on frontend architecture,
+              state management, performance and API-driven workflows.
+            </p>
 
-          {/* Center spacing */}
-          <div className="flex-shrink-0 mx-4 w-32 lg:w-48"></div>
+            <div className="hero-actions">
+              <a href="#work" className="button button-primary">
+                Selected work <ArrowDown aria-hidden="true" />
+              </a>
+              <a href="mailto:zaid.ch20@gmail.com" className="button button-secondary">
+                Contact me <ArrowUpRight aria-hidden="true" />
+              </a>
+            </div>
 
-          {/* Right text - "I AM ZAID" */}
-          <motion.div
-            initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="flex-1 flex items-center justify-start lg:pl-8 mt-8 lg:mt-0"
-          >
-            <div className="text-center lg:text-left">
-              <h1
-                className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-foreground glow-text mb-2 drop-shadow-lg"
-                style={{ wordSpacing: '0.3em', letterSpacing: '-0.05em' }}
-              >
-                I AM ZAID
-              </h1>
-              <h3 className="text-lg md:text-xl lg:text-2xl font-mono text-primary drop-shadow-lg max-w-2xl">
-                Full Stack Engineer | React, Node.js, MongoDB, Rails, React
-                Native | Web & Mobile App Development | AI-Enhanced UX
-              </h3>
+            <div className="hero-facts" aria-label="Professional summary">
+              <div>
+                <strong>4+</strong>
+                <span>years in production software</span>
+              </div>
+              <div>
+                <strong>2</strong>
+                <span>promotions at 7Vals</span>
+              </div>
+              <div>
+                <strong>Web + mobile</strong>
+                <span>hands-on product engineering</span>
+              </div>
             </div>
           </motion.div>
         </div>
-
-        {/* Floating elements for extra effect */}
-        <div className="absolute top-20 left-20 w-2 h-2 bg-primary rounded-full animate-pulse"></div>
-        <div className="absolute bottom-20 right-20 w-3 h-3 bg-secondary rounded-full animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-10 w-1 h-1 bg-primary/60 rounded-full animate-pulse delay-500"></div>
-
-        {/* Gradient overlay at the bottom - animated gradient to purple-blue */}
-        <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-[#0a0515] to-transparent pointer-events-none"></div>
       </section>
 
-      {/* About Section */}
       <AboutSection />
+      <ExperienceSection />
 
-      {/* Featured Projects Section */}
-      {featuredProjects.length > 0 && (
-        <section className="py-20 px-8 sm:px-12 lg:px-16 bg-gradient-teal-grey relative min-h-screen flex items-center justify-center">
-          {/* Background container to prevent content bleeding through */}
-          <div className="absolute inset-0 bg-gradient-teal-grey"></div>
-
-          {/* Gradient overlay at the top - black to grey */}
-          <div className="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-muted to-transparent"></div>
-
-          {/* Gradient overlay at the bottom - grey to black */}
-          <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-muted to-transparent pointer-events-none"></div>
-
-          <div className="max-w-7xl mx-auto w-full relative z-10">
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="text-center mb-16 w-full"
-            >
-              <h2 className="text-3xl sm:text-4xl font-bold glow-text mb-4 mobile-mt-20">
-                Featured Projects
-              </h2>
-              <p
-                className="block text-lg text-muted-foreground max-w-2xl mx-auto text-center pb-4"
-                style={{
-                  display: 'block',
-                  marginBottom: '20px !important',
-                  marginLeft: 'auto !important',
-                  marginRight: 'auto !important',
-                  fontSize: '1.5rem',
-                }}
-              >
-                My latest and most impactful work
-              </p>
-            </motion.div>
-
-            <div className="space-y-32">
-              {featuredProjects.map((project: Project) => (
-                <div
-                  key={project.id}
-                  className="mb-16"
-                  style={{
-                    marginBottom: '26px !important',
-                    marginLeft: '8px !important',
-                    marginRight: '8px !important',
-                  }}
-                >
-                  <FeaturedProject project={project} />
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* Web Projects Section */}
       <ProjectSection
-        title="Web Projects"
-        subtitle="Enterprise SaaS applications built for global scale"
-        projects={webProjects}
-        icon="💻"
+        id="work"
+        eyebrow="Selected professional work"
+        title="Engineering work with clear ownership"
+        subtitle="A selection of long-running platform work, product delivery and technical initiatives from the EZO enterprise SaaS suite."
+        projects={professionalWork}
+        background="teal"
+        columns="two"
       />
 
-      {/* Mobile Projects Section */}
       <ProjectSection
-        title={<span className="mobile-mt-20">Mobile Projects</span>}
-        subtitle="Cross-platform mobile applications with offline capabilities"
+        id="products"
+        eyebrow="Professional product context"
+        title="Work across the EZO product suite"
+        subtitle="Selected contributions across the EZO product suite through my work at 7Vals."
+        projects={productProjects}
+        background="blue"
+        columns="two"
+        compact
+      />
+
+      <ProjectSection
+        id="mobile"
+        eyebrow="Production mobile apps"
+        title="React Native work used in the field"
+        subtitle="Public store links provide direct evidence of the production applications I have contributed to since 2022."
         projects={mobileProjects}
-        icon="📱"
+        background="navy"
+        columns="two"
+        compact
       />
 
-      {/* Contact Section with Fixed Layout */}
-      <section className="py-20 px-8 sm:px-12 lg:px-16 relative bg-gradient-navy-purple">
-        {/* Top gradient overlay for smooth transition from previous section */}
-        <div className="absolute top-0 left-0 right-0 h-64 bg-gradient-to-b from-gradient-navy-purple to-transparent pointer-events-none"></div>
-        {/* Background container to prevent content bleeding through */}
-        <div className="absolute inset-0 bg-gradient-navy-purple"></div>
+      <ProjectSection
+        id="projects"
+        eyebrow="Public side projects"
+        title="AI-assisted prototypes"
+        subtitle="Self-directed AI-assisted prototypes for exploring product ideas and rapid implementation."
+        projects={publicProjects}
+        background="teal"
+        columns="two"
+      />
 
-        {/* Gradient overlay at the top - grey to black */}
-        <div className="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-muted to-transparent"></div>
+      <EducationSection />
 
-        <div className="w-full relative z-10 pb-12">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="flex flex-col items-center text-center mb-16"
-          >
-            <h2 className="text-3xl sm:text-4xl font-bold glow-text mb-4">
-              Let&apos;s Connect
-            </h2>
-            <p className="text-base sm:text-lg text-muted-foreground max-w-2xl">
-              Ready to build something amazing together?
+      <section id="contact" className="section-shell contact-section bg-gradient-navy-purple">
+        <div className="section-overlay bg-gradient-navy-purple" />
+        <div className="section-fade section-fade-top" />
+        <div className="section-content">
+          <div className="section-header">
+            <p className="eyebrow">Contact</p>
+            <h2 className="section-title">Let&apos;s connect</h2>
+            <p>
+              Interested in discussing frontend engineering, React and
+              TypeScript systems, or product engineering opportunities? Feel
+              free to reach out.
             </p>
-          </motion.div>
+          </div>
 
-          {/* Fixed Grid Layout */}
-          <div
-            className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 w-full"
-            style={{
-              width: '100%',
-              paddingTop: '16px',
-              paddingBottom: '16px',
-              paddingLeft: '16px',
-              paddingRight: '16px',
-            }}
-          >
-            {/* Left Column - Contact Info */}
+          <div className="contact-grid">
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
+              initial={{ opacity: 0, x: -44 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="flex flex-col space-y-8 w-full px-8 lg:px-12"
+              transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+              viewport={{ once: true, amount: 0.25 }}
+              className="contact-details"
             >
-              <div className="space-y-4">
-                <h3 className="text-2xl font-bold text-foreground">
-                  Get in Touch
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  I&apos;m always interested in new opportunities and exciting
-                  projects. Let&apos;s discuss how we can work together!
-                </p>
+              <div>
+                <MapPin aria-hidden="true" />
+                <span>Lahore, Pakistan</span>
               </div>
-              <div className="flex flex-col space-y-8">
-                {[
-                  {
-                    icon: Mail,
-                    text: 'zaid.ch20@gmail.com',
-                    href: 'mailto:zaid.ch20@gmail.com',
-                  },
-                  {
-                    icon: Linkedin,
-                    text: 'LinkedIn',
-                    href: 'https://www.linkedin.com/in/zaid-naeem-1b24611a8',
-                  },
-                  {
-                    icon: Github,
-                    text: 'GitHub',
-                    href: 'https://github.com/ZaidNx',
-                  },
-                ].map((item, index) => (
-                  <motion.a
-                    key={item.text}
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 text-primary hover:text-secondary transition-colors p-4 rounded-lg hover:bg-muted/50 border border-transparent hover:border-primary/20"
-                    whileHover={{ x: 10 }}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{
-                      delay: index * 0.1,
-                      duration: 0.5,
-                      type: 'spring',
-                      stiffness: 300,
-                    }}
-                    viewport={{ once: true }}
-                  >
-                    <item.icon className="h-5 w-5 flex-shrink-0" />
-                    <span>{item.text}</span>
-                  </motion.a>
-                ))}
-              </div>
+              <a href="mailto:zaid.ch20@gmail.com">
+                <Mail aria-hidden="true" />
+                <span>zaid.ch20@gmail.com</span>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/zaidnaeem-dev/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Linkedin aria-hidden="true" />
+                <span>LinkedIn</span>
+              </a>
+              <a
+                href="https://github.com/ZaidNx"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Github aria-hidden="true" />
+                <span>GitHub</span>
+              </a>
+              <a
+                href="mailto:zaid.ch20@gmail.com?subject=Resume%20request"
+                className="resume-note"
+              >
+                Résumé available on request <ArrowUpRight aria-hidden="true" />
+              </a>
             </motion.div>
 
-            {/* Right Column - Contact Form */}
             <motion.form
-              onSubmit={handleSubmit}
-              initial={{ opacity: 0, x: 50 }}
+              initial={{ opacity: 0, x: 44 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              viewport={{ once: true }}
-              className="flex flex-col space-y-6 w-full px-8 lg:px-12 lg:justify-self-end lg:max-w-md"
+              transition={{ duration: 0.75, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+              viewport={{ once: true, amount: 0.25 }}
+              onSubmit={handleSubmit}
+              className="contact-form"
             >
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1, duration: 0.5 }}
-                viewport={{ once: true }}
-                className="w-full"
-                style={{ marginBottom: '12px' }}
-              >
+              <label>
+                Name
                 <input
                   type="text"
-                  placeholder="Your Name"
-                  value={formData.name}
-                  onChange={(e) => handleInputChange('name', e.target.value)}
+                  autoComplete="name"
                   required
-                  className="w-full p-4 bg-muted border border-border rounded-lg focus:border-primary focus:outline-none font-mono"
-                  style={{ paddingLeft: '6px' }}
+                  value={formData.name}
+                  onChange={(event) =>
+                    setFormData((current) => ({ ...current, name: event.target.value }))
+                  }
                 />
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2, duration: 0.5 }}
-                viewport={{ once: true }}
-                className="w-full"
-                style={{ marginBottom: '12px' }}
-              >
+              </label>
+              <label>
+                Email
                 <input
                   type="email"
-                  placeholder="Your Email"
+                  autoComplete="email"
+                  required
                   value={formData.email}
-                  onChange={(e) => handleInputChange('email', e.target.value)}
-                  required
-                  className="w-full p-4 bg-muted border border-border rounded-lg focus:border-primary focus:outline-none font-mono"
-                  style={{ paddingLeft: '6px' }}
+                  onChange={(event) =>
+                    setFormData((current) => ({ ...current, email: event.target.value }))
+                  }
                 />
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3, duration: 0.5 }}
-                viewport={{ once: true }}
-                className="w-full"
-                style={{ marginBottom: '12px' }}
-              >
+              </label>
+              <label>
+                Message
                 <textarea
-                  placeholder="Your Message"
-                  rows={4}
-                  value={formData.message}
-                  onChange={(e) => handleInputChange('message', e.target.value)}
+                  rows={5}
                   required
-                  className="w-full p-4 bg-muted border border-border rounded-lg focus:border-primary focus:outline-none font-mono resize-none"
-                  style={{ paddingLeft: '6px' }}
+                  value={formData.message}
+                  onChange={(event) =>
+                    setFormData((current) => ({ ...current, message: event.target.value }))
+                  }
                 />
-              </motion.div>
-
-              <motion.button
-                type="submit"
-                disabled={isSubmitting}
-                className={`w-full px-8 py-4 font-mono font-semibold rounded-lg glow transition-transform mb-6 ${
-                  isSubmitting
-                    ? 'bg-muted text-muted-foreground cursor-not-allowed'
-                    : 'bg-primary text-background hover:scale-105'
-                }`}
-                whileHover={!isSubmitting ? { scale: 1.05 } : {}}
-                whileTap={!isSubmitting ? { scale: 0.95 } : {}}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4, duration: 0.5 }}
-                viewport={{ once: true }}
-              >
-                {isSubmitting ? 'Sending...' : 'Send Message'}
-              </motion.button>
-
-              {/* Status Messages */}
-              {submitStatus === 'success' && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="text-green-400 text-sm text-center p-3 bg-green-400/10 rounded-lg border border-green-400/20"
-                >
-                  ✅ Message sent successfully! I&apos;ll get back to you soon.
-                </motion.div>
-              )}
-
-              {submitStatus === 'error' && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="text-red-400 text-sm text-center p-3 bg-red-400/10 rounded-lg border border-red-400/20"
-                >
-                  ❌ Failed to send message. Please try again or email me
-                  directly.
-                </motion.div>
-              )}
+              </label>
+              <button type="submit" className="button button-primary" disabled={isSubmitting}>
+                {isSubmitting ? 'Sending…' : 'Send message'}
+              </button>
+              <div className="form-status" aria-live="polite">
+                {submitStatus === 'success' && 'Message sent. Thank you — I’ll be in touch.'}
+                {submitStatus === 'error' && 'The form could not send. Please email me directly.'}
+              </div>
             </motion.form>
           </div>
         </div>
       </section>
 
-      {/* Footer with Parallax */}
-      <footer className="py-12 px-8 sm:px-12 lg:px-16 border-t border-border bg-background relative">
-        {/* Background container to prevent content bleeding through */}
-        <div className="absolute inset-0 bg-background"></div>
-
-        <div className="max-w-7xl mx-auto relative z-10 flex flex-col items-center justify-center">
-          <ParallaxText speed={0.1}>
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="flex flex-col items-center space-y-6 text-center"
-            >
-              <p className="text-muted-foreground font-mono text-center">--</p>
-              <div className="flex flex-wrap justify-center gap-6">
-                <motion.a
-                  href="/resume.pdf"
-                  className="text-muted-foreground hover:text-primary transition-colors font-mono"
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ type: 'spring', stiffness: 300 }}
-                >
-                  Resume
-                </motion.a>
-                <motion.a
-                  href="https://github.com/ZaidNx"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-primary transition-colors font-mono"
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ type: 'spring', stiffness: 300 }}
-                >
-                  GitHub
-                </motion.a>
-              </div>
-              <p className="text-sm text-muted-foreground text-center">
-                © 2025 Zaid Naeem. All rights reserved.
-              </p>
-            </motion.div>
-          </ParallaxText>
+      <footer className="site-footer">
+        <p>© {new Date().getFullYear()} Zaid Naeem. All rights reserved.</p>
+        <div>
+          <a href="mailto:zaid.ch20@gmail.com">Email</a>
+          <a href="https://www.linkedin.com/in/zaidnaeem-dev/">LinkedIn</a>
+          <a href="https://github.com/ZaidNx">GitHub</a>
         </div>
       </footer>
-    </div>
+    </main>
   );
 }

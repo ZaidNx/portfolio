@@ -3,86 +3,66 @@
 import { motion } from 'framer-motion';
 import { Project } from '../data/projects';
 import { ProjectCard } from './ProjectCard';
-import { ReactNode } from 'react';
 
 interface ProjectSectionProps {
-  title: ReactNode;
+  id?: string;
+  eyebrow: string;
+  title: string;
   subtitle: string;
   projects: Project[];
-  icon: string;
+  background?: 'teal' | 'blue' | 'navy';
+  columns?: 'two' | 'three';
+  compact?: boolean;
 }
 
+const backgroundClass = {
+  teal: 'bg-gradient-grey-teal',
+  blue: 'bg-gradient-blue-purple',
+  navy: 'bg-gradient-navy-purple',
+};
+
 export function ProjectSection({
+  id,
+  eyebrow,
   title,
   subtitle,
   projects,
-  icon,
+  background = 'teal',
+  columns = 'two',
+  compact = false,
 }: ProjectSectionProps) {
   return (
-    <section className="pt-8 pb-20 px-0 sm:px-0 lg:px-0 relative bg-gradient-grey-teal min-h-screen flex items-center justify-center">
-      {/* Background container to prevent content bleeding through */}
-      <div className="absolute inset-0 bg-gradient-grey-teal"></div>
-      <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-muted to-transparent pointer-events-none"></div>
+    <section
+      id={id}
+      className={`section-shell ${backgroundClass[background]}`}
+    >
+      <div className={`section-overlay ${backgroundClass[background]}`} />
+      <div className="section-fade section-fade-top" />
+      <div className="section-fade section-fade-bottom" />
 
-      {/* Gradient overlay at the top - smooth transition */}
-      <div className="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-muted to-transparent pointer-events-none"></div>
-
-      <div
-        className="max-w-7xl mx-auto w-full relative z-10"
-        style={{ paddingLeft: '16px', paddingRight: '16px' }}
-      >
-        {/* Section Header */}
+      <div className="section-content">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 46 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-16 w-full"
+          transition={{ duration: 0.78, ease: [0.22, 1, 0.36, 1] }}
+          viewport={{ once: true, amount: 0.35 }}
+          className="section-header"
         >
-          <motion.div
-            className="flex items-center justify-center gap-3 mb-4 w-full mobile-mt-20"
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            <span className="text-4xl">{icon}</span>
-            <h2 className="text-3xl sm:text-4xl font-bold glow-text">
-              {title}
-            </h2>
-          </motion.div>
-          <motion.div
-            className="w-full flex justify-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            viewport={{ once: true }}
-          >
-            <p className="text-lg text-muted-foreground max-w-2xl text-center">
-              {subtitle}
-            </p>
-          </motion.div>
+          <p className="eyebrow">{eyebrow}</p>
+          <h2 className="section-title">{title}</h2>
+          <p>{subtitle}</p>
         </motion.div>
 
-        {/* Projects Grid */}
-        <motion.div
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 w-full justify-items-center"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          viewport={{ once: true }}
-          style={{ marginTop: '16px !important' }}
-        >
+        <div className={`project-grid project-grid-${columns}`}>
           {projects.map((project, index) => (
-            <div
+            <ProjectCard
               key={project.id}
-              className="w-full max-w-sm"
-              style={{ marginBottom: '1rem !important' }}
-            >
-              <ProjectCard project={project} index={index} />
-            </div>
+              project={project}
+              index={index}
+              compact={compact}
+            />
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
