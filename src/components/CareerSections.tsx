@@ -58,7 +58,17 @@ export function ExperienceSection() {
           <div className="experience-company">
             <BriefcaseBusiness aria-hidden="true" />
             <div>
-              <h3>7Vals — Product Engineering for EZO</h3>
+              <h3>
+                <a
+                  href="https://www.7vals.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-ref-link"
+                >
+                  7Vals
+                </a>{' '}
+                — Product Engineering for EZO
+              </h3>
               <p>
                 <MapPin aria-hidden="true" /> Lahore, Pakistan
               </p>
@@ -117,7 +127,16 @@ export function EducationSection() {
             <div>
               <span className="credential-label">Education · 2018 – 2022</span>
               <h3>BS Computer Science</h3>
-              <p>National University of Computer and Emerging Sciences (FAST-NUCES)</p>
+              <p>
+                <a
+                  href="https://www.nu.edu.pk/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-ref-link"
+                >
+                  National University of Computer and Emerging Sciences (FAST-NUCES)
+                </a>
+              </p>
               <ul>
                 <li>Dean&apos;s List — Fall 2020 and Fall 2021</li>
                 <li>Full four-year merit scholarship</li>
@@ -135,7 +154,16 @@ export function EducationSection() {
             <Award aria-hidden="true" />
             <div>
               <span className="credential-label">Certification</span>
-              <h3>AWS Certified Cloud Practitioner</h3>
+              <h3>
+                <a
+                  href="https://aws.amazon.com/certification/certified-cloud-practitioner/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-ref-link"
+                >
+                  AWS Certified Cloud Practitioner
+                </a>
+              </h3>
               <p>CLF-C02</p>
             </div>
           </motion.article>
