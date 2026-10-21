@@ -229,10 +229,11 @@ export default function Home() {
                 <span>GitHub</span>
               </a>
               <a
-                href="mailto:zaid.ch20@gmail.com?subject=Resume%20request"
+                href="/Zaid_Naeem_Resume.pdf"
+                download="Zaid_Naeem_Resume.pdf"
                 className="resume-note"
               >
-                Résumé available on request <ArrowUpRight aria-hidden="true" />
+                Download résumé <ArrowUpRight aria-hidden="true" />
               </a>
             </motion.div>
 

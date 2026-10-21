@@ -31,6 +31,36 @@ export const professionalWork: Project[] = [
     category: 'professional',
   },
   {
+    id: 'dashboard-modernization',
+    title: 'Multi-product dashboard & data-visualization modernization',
+    description:
+      'Implemented a React modernization of the main dashboard across four enterprise SaaS products, replacing legacy dashboard rendering with reusable, Figma-aligned data-visualization components.',
+    features: [
+      'Built reusable visualization components for stat/KPI tiles, donut, bar, line and funnel views, including a generic funnel component reused across product-specific sales and license funnels',
+      'Implemented typed data parsers over backend contracts, per-widget state with stale-request guards, and lazy visible-card fetching for responsive loading',
+      'Delivered configurable dashboards with widget reordering, custom reports and product-specific alerts across all four products',
+    ],
+    techStack: ['React', 'TypeScript', 'Redux', 'Data Visualization', 'Ruby on Rails'],
+    featureLabel: 'Implementation scope',
+    eyebrow: 'Data visualization',
+    category: 'professional',
+  },
+  {
+    id: 'accessibility-implementation',
+    title: 'Production accessibility for blind and low-vision users',
+    description:
+      'Implemented WCAG-aligned accessibility improvements in production React interfaces, based on requirements raised by a major enterprise customer.',
+    features: [
+      'Added semantic HTML structure, ARIA labels and accessible form controls across customer-facing interfaces',
+      'Implemented keyboard navigation and visible focus states so interfaces remain usable without a mouse',
+      'Worked interface-by-interface so existing functionality and layout stayed intact for all users',
+    ],
+    techStack: ['React', 'WCAG', 'ARIA', 'Semantic HTML', 'Keyboard Navigation'],
+    featureLabel: 'Accessibility work',
+    eyebrow: 'Accessibility',
+    category: 'professional',
+  },
+  {
     id: 'legacy-react-modernization',
     title: 'Legacy-to-React modernization',
     description:
